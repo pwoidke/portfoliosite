@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen" href="code.css" />
+
+<title>Code Sample</title>
+</head>
+
+<body>
+
+<pre>
+#include <iostream>
+using namespace std;
+
+int main(){
+
+int limit =0;
+long sumPrimes = 0;
+int primeCount = 0;
+bool prime = true;
+int hunMilCount = 0;
+
+cout << "Find sum of primes below: ";
+cin >> limit;
+
+for(int i = 1; i <= limit; i++){
+
+	for (int j = 2; j < i; j++) {
+        	if ((i%j)==0) {
+                	prime = false;
+                }
+        }
+                 
+        if (prime) {
+                primeCount++;
+		cout << (primeCount-1) << ":   " << i << endl;
+		sumPrimes += i;
+        }
+
+	if (sumPrimes >= 100000000) {
+		hunMilCount++;
+		sumPrimes -= 100000000;
+	}
+
+prime = true;
+}
+
+cout << endl << "The sum of primes below " << limit << " is " << hunMilCount << (sumPrimes-1) << endl;
+
+return 0;
+}
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>The Electric Beach Tanning Salon</title>
+
+<link href="template.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAADcIZB73L7eCOJTBrXuIcghQjaqdIZD6jrjNQJyuo6IQFG0T8axQ-wGF04U2pSiFpsE36Rd-tLvzx4Q" type="text/javascript"></script>
+<style type="text/css">
+td img {display: block;}</style>
+
+</head>
+
+<div align="center"><body class="oneColFixCtr"><table border="0" cellpadding="0" cellspacing="0" width="1024">
+<!-- fwtable fwsrc="newtemp.png" fwpage="Page 1" fwbase="newtemp.png" fwstyle="Dreamweaver" fwdocid = "582579314" fwnested="0" -->
+  <tr>
+   <td><img src="images/spacer.gif" width="135" height="1" border="0" alt="" /></td>
+   <td><img src="images/spacer.gif" width="182" height="1" border="0" alt="" /></td>
+   <td><img src="images/spacer.gif" width="102" height="1" border="0" alt="" /></td>
+   <td><img src="images/spacer.gif" width="93" height="1" border="0" alt="" /></td>
+   <td><img src="images/spacer.gif" width="220" height="1" border="0" alt="" /></td>
+   <td><img src="images/spacer.gif" width="87" height="1" border="0" alt="" /></td>
+   <td><img src="images/spacer.gif" width="205" height="1" border="0" alt="" /></td>
+   <td><img src="images/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+  </tr>
+
+  <tr>
+   <td colspan="7"><img name="newtemp_r1_c1" src="images/newtemp_r1_c1.gif" width="1024" height="46" border="0" id="newtemp_r1_c1" alt="" /></td>
+   <td><img src="images/spacer.gif" width="1" height="46" border="0" alt="" /></td>
+  </tr>
+  <tr>
+   <td rowspan="15"><img name="newtemp_r2_c1" src="images/newtemp_r2_c1.gif" width="135" height="722" border="0" id="newtemp_r2_c1" alt="" /></td>
+   <td><a href="index.html"><img name="bground2_r2_c2" src="images/bground2_r2_c2.gif" width="182" height="148" border="0" id="bground2_r2_c2" alt="" /></a></td>
+   <td rowspan="3" colspan="5"><img name="newtemp_r2_c3" src="images/newtemp_r2_c3.gif" width="707" height="220" border="0" id="newtemp_r2_c3" alt="" /></td>
+   <td><img src="images/spacer.gif" width="1" height="148" border="0" alt="" /></td>
+  </tr>
+  <tr>
+   <td><img name="newtemp_r3_c2" src="images/newtemp_r3_c2.gif" width="182" height="20" border="0" id="newtemp_r3_c2" alt="" /></td>
+   <td><img src="images/spacer.gif" width="1" height="20" border="0" alt="" /></td>
+  </tr>
+  <tr>
+   <td rowspan="2"><a href="index.html"><img name="bground2_r4_c2" src="images/bground2_r4_c2.gif" width="182" height="61" border="0" id="bground2_r4_c2" alt="Home" /></a></td>
+   <td><img src="images/spacer.gif" width="1" height="52" border="0" alt="" /></td>
+  </tr>
+  <tr>
+   <td rowspan="12"><img name="newtemp_r5_c3" src="images/newtemp_r5_c3.gif" width="102" height="502" border="0" id="newtemp_r5_c3" alt="" /></td>
+   <td rowspan="8" colspan="3">   
+   <div id="map" style="width: 400px; height: 300px"></div>
+
+    <script type="text/javascript">
+
+    //<![CDATA[
+
+    
+
+    var map = new GMap(document.getElementById("map"));
+
+	map.addControl(new GLargeMapControl());
+
+    map.centerAndZoom(new GPoint(-81.9,41.44), 6);
+
+
+	var marker1 = new GMarker(new GPoint(-81.869904,41.439702));
+	map.addOverlay(marker1);
+	GEvent.addListener(marker1, "click", function() {
+marker1.openInfoWindowHtml("22550 Lorain Rd<br>Fairview Park, OH<br />Phone: 440.716.0937<br><small><i>13 beds and 2 VHR booths</i><br>Open Mon-Thurs&nbsp;9am-9pm<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fridays&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9am-8pm<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Weekends&nbsp;10am-5pm</small>");
+});
+
+	var marker2 = new GMarker(new GPoint(-81.939414,41.437044));
+	map.addOverlay(marker2);
+	GEvent.addListener(marker2, "click", function() {
+marker2.openInfoWindowHtml("28719 Center Ridge Rd<br>Westlake, OH<br />Phone: 440.835.8799<br><small><i>6 beds and 3 VHR booths</i><br>Open Mon-Fri&nbsp;9am-8pm<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Weekends&nbsp;10am-5pm</small>");
+});
+    
+	var marker3 = new GMarker(new GPoint(-81.853027,41.446444));
+	map.addOverlay(marker3);
+	GEvent.addListener(marker3, "click", function() {
+marker3.openInfoWindowHtml("17480 Lorain Rd<br>West Park, OH<br />Phone: 216.671.9955<br><small><i>17 beds and 2 VHR booths</i><br>Open Mon-Fri&nbsp;8am-9pm<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Weekends&nbsp;10am-5pm</smal>");
+});
+    
+
+    //]]>
+
+    </script>
+    
+    </td>
+   <td rowspan="12"><img name="newtemp_r5_c7" src="images/newtemp_r5_c7.gif" width="205" height="502" border="0" id="newtemp_r5_c7" alt="" /></td>
+   <td><img src="images/spacer.gif" width="1" height="9" border="0" alt="" /></td>
+  </tr>
+  <tr>
+   <td><a href="locations.html"><img name="bground2_r5_c2" src="images/bground2_r5_c2.gif" width="182" height="60" border="0" id="bground2_r5_c2" alt="Locations &amp; Hours" /></a></td>
+   <td><img src="images/spacer.gif" width="1" height="60" border="0" alt="" /></td>
+  </tr>
+  <tr>
+   <td><img name="newtemp_r7_c2" src="images/newtemp_r7_c2.gif" width="182" height="23" border="0" id="newtemp_r7_c2" alt="" /></td>
+   <td><img src="images/spacer.gif" width="1" height="23" border="0" alt="" /></td>
+  </tr>
+  <tr>
+   <td><a href="products.html"><img name="bground2_r7_c2" src="images/bground2_r7_c2.gif" width="182" height="59" border="0" id="bground2_r7_c2" alt="Products" /></a></td>
+   <td><img src="images/spacer.gif" width="1" height="59" border="0" alt="" /></td>
+  </tr>
+  <tr>
+   <td><a href="packages.html"><img name="bground2_r8_c2" src="images/bground2_r8_c2.gif" width="182" height="53" border="0" id="bground2_r8_c2" alt="Packages" /></a></td>
+   <td><img src="images/spacer.gif" width="1" height="53" border="0" alt="" /></td>
+  </tr>
+  <tr>
+   <td><img name="newtemp_r10_c2" src="images/newtemp_r10_c2.gif" width="182" height="29" border="0" id="newtemp_r10_c2" alt="" /></td>
+   <td><img src="images/spacer.gif" width="1" height="29" border="0" alt="" /></td>
+  </tr>
+  <tr>
+   <td><a href="benefits.html"><img name="bground2_r10_c2" src="images/bground2_r10_c2.gif" width="182" height="55" border="0" id="bground2_r10_c2" alt="Benefits" /></a></td>
+   <td><img src="images/spacer.gif" width="1" height="55" border="0" alt="" /></td>
+  </tr>
+  <tr>
+   <td rowspan="3"><a href="redlight.html"><img name="bground2_r11_c2" src="images/bground2_r11_c2.gif" width="182" height="55" border="0" id="bground2_r11_c2" alt="Red Light Therapy" /></a></td>
+   <td><img src="images/spacer.gif" width="1" height="12" border="0" alt="" /></td>
+  </tr>
+  <tr>
+   <td colspan="3"><img name="newtemp_r13_c4" src="images/newtemp_r13_c4.gif" width="400" height="32" border="0" id="newtemp_r13_c4" alt="" /></td>
+   <td><img src="images/spacer.gif" width="1" height="32" border="0" alt="" /></td>
+  </tr>
+  <tr>
+   <td rowspan="3"><img name="newtemp_r14_c4" src="images/newtemp_r14_c4.gif" width="93" height="170" border="0" id="newtemp_r14_c4" alt="" /></td>
+   <td rowspan="2"><a href="index.html"><img name="newtemp_r14_c5" src="images/newtemp_r14_c5.gif" width="220" height="23" border="0" id="newtemp_r14_c5" alt="Home" /></a></td>
+   <td rowspan="3"><img name="newtemp_r14_c6" src="images/newtemp_r14_c6.gif" width="87" height="170" border="0" id="newtemp_r14_c6" alt="" /></td>
+   <td><img src="images/spacer.gif" width="1" height="11" border="0" alt="" /></td>
+  </tr>
+  <tr>
+   <td rowspan="2"><img name="newtemp_r15_c2" src="images/newtemp_r15_c2.gif" width="182" height="159" border="0" id="newtemp_r15_c2" alt="" /></td>
+   <td><img src="images/spacer.gif" width="1" height="12" border="0" alt="" /></td>
+  </tr>
+  <tr>
+   <td><img name="newtemp_r16_c5" src="images/newtemp_r16_c5.gif" width="220" height="147" border="0" id="newtemp_r16_c5" alt="" /></td>
+   <td><img src="images/spacer.gif" width="1" height="147" border="0" alt="" /></td>
+  </tr>
+</table>
+<!-- end #container --></div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-9763350-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body>
+</html>
