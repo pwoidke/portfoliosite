@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAADcIZB73L7eCOJTBrXuIcghQjaqdIZD6jrjNQJyuo6IQFG0T8axQ-wGF04U2pSiFpsE36Rd-tLvzx4Q" type="text/javascript"></script>
+
+  </head>
+
+  <body>
+
+    <div id="map" style="width: 400px; height: 300px"></div>
+
+    <script type="text/javascript">
+
+    //<![CDATA[
+
+    
+
+    var map = new GMap(document.getElementById("map"));
+
+	 map.addControl(new GLargeMapControl());
+
+    map.centerAndZoom(new GPoint(-81.869904,41.439702), 4);
+
+
+    var point = new GPoint(-81.869904,41.439702);
+
+	var marker = new GMarker(point);
+
+	GEvent.addListener(marker, "click", function() {
+marker.openInfoWindowHtml("<table width='215'><tr><td><small>22550 Lorain Road<br>Fairview Park, OH<br />Phone: 440.716.0937</td></tr></table><br /><a target='_blank' href='http://maps.google.com/maps?q=22550 Lorain Road%20Fairview Park,%20OH'><small>Directions</a>");
+});
+	
+
+	map.addOverlay(marker);
+
+
+    var point = new GPoint(-81.939415,41.437255);
+
+	var marker = new GMarker(point);
+
+	map.addOverlay(marker);
+    
+	
+    var point = new GPoint(-81.853027,41.446444);
+
+	var marker = new GMarker(point);
+
+	map.addOverlay(marker);    
+    
+
+    //]]>
+
+    </script>
+
+  </body>
+
+</html>
+
