@@ -31,6 +31,7 @@ $(document).ready(function(){
     $('.parallelogram').click(function(){
         if($(this).hasClass('full'))
         {
+            $(this).find('article').hide(200);
             $(this).animate({
                 skewX: degrees + 'deg',
                 width: '13em'
@@ -48,6 +49,7 @@ $(document).ready(function(){
             $(this).children().animate({
                 skewX: '0deg'
             });
+            $(this).find('article').show(200);
             $(this).addClass('full');
         }
     });

@@ -99,8 +99,10 @@ textarea {
 
 #container {
     width: 85%;
-    margin-left: auto;
-    margin-right: auto;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto;
 }
 
 hr {
@@ -108,9 +110,14 @@ hr {
     height: .25em;
 }
 
+section {
+    text-align: center;
+}
+
 footer {
     text-align: center;
     background-color: #FF3D0D;
+    color: white;
 }
 
 .parallelogram {
@@ -119,11 +126,18 @@ footer {
     background-color: #FF3D0D;
     margin: .25em;
     width: 13em;
+    text-align: left;
 }
 
 h3 {
     margin: 1em;
 }
+
+.parallelogram article {
+    display: none;
+    margin: 1em;
+}
+
 
 
 
