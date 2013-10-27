@@ -117,13 +117,13 @@ footer {
     display: inline-block;
     color: white;
     background-color: #FF3D0D;
-    margin: 5px;
+    margin: .25em;
+    width: 13em;
 }
 
 h3 {
     margin: 1em;
 }
-
 
 
 
