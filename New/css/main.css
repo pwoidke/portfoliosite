@@ -97,12 +97,14 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+html, body {
+    height: 98%;
+}
+
 #container {
     width: 85%;
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
     margin: 0 auto;
+    min-height: 94%;
 }
 
 hr {
@@ -118,6 +120,7 @@ footer {
     text-align: center;
     background-color: #FF3D0D;
     color: white;
+    height: 1.5em;
 }
 
 .parallelogram {
@@ -138,7 +141,9 @@ h3 {
     margin: 1em;
 }
 
-
+.linkPair {
+    display: inline-block;
+}
 
 
 /* ==========================================================================

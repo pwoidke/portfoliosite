@@ -1,4 +1,5 @@
 var degrees = -15;
+
 $(document).ready(function(){
 
     $('.parallelogram').hover(
