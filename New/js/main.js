@@ -1,5 +1,9 @@
 var degrees = -15;
 
+/*	Define Click Event for Mobile */
+if( 'ontouchstart' in window ){ var click = 'touchstart'; }
+else { var click = 'click'; }
+
 $(document).ready(function(){
 
     $('.parallelogram').hover(

@@ -108,7 +108,7 @@ html, body {
 }
 
 hr {
-    background-color: #ff6500;
+    background-color: #FF3D0D;
     height: .25em;
 }
 
@@ -118,7 +118,7 @@ section {
 
 footer {
     text-align: center;
-    background-color: #ff6500;
+    background-color: #FF3D0D;
     color: white;
     height: 1.5em;
 }
@@ -126,7 +126,7 @@ footer {
 .parallelogram {
     display: inline-block;
     color: white;
-    background-color: #ff6500;
+    background-color: #FF3D0D;
     margin: .25em;
     width: 13em;
     text-align: left;
@@ -142,7 +142,7 @@ h3 {
 }
 
 .toggleButton {
-    color: #ff6500;
+    color: #FF3D0D;
     position: absolute;
     top: 0;
     right: 20px;
