@@ -67,4 +67,18 @@ $(document).ready(function(){
         {'-moz-transform': 'skewX(' + -degrees + 'deg)'},
         {'-webkit-transform': 'skewX(' + -degrees + 'deg)'}
     );
+    
+    $('.toggleButton').click(function () {
+        if($('.toggleButton').html() === "+")
+        {
+            $('.toggleButton').html("&minus;");
+            $('.parallelogram').removeClass('full');
+        }
+        else
+        {
+            $('.toggleButton').html("&#43;");
+            $('.parallelogram').addClass('full');
+        }
+        $('.parallelogram').click();
+    });
 });

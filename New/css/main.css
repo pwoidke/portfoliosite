@@ -108,7 +108,7 @@ html, body {
 }
 
 hr {
-    background-color: #FF3D0D;
+    background-color: #ff6500;
     height: .25em;
 }
 
@@ -118,7 +118,7 @@ section {
 
 footer {
     text-align: center;
-    background-color: #FF3D0D;
+    background-color: #ff6500;
     color: white;
     height: 1.5em;
 }
@@ -126,7 +126,7 @@ footer {
 .parallelogram {
     display: inline-block;
     color: white;
-    background-color: #FF3D0D;
+    background-color: #ff6500;
     margin: .25em;
     width: 13em;
     text-align: left;
@@ -139,6 +139,14 @@ h3 {
 .parallelogram article {
     display: none;
     margin: 1em;
+}
+
+.toggleButton {
+    color: #ff6500;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size: 3.5em;
 }
 
 
