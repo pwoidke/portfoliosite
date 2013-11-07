@@ -58,7 +58,9 @@ $(document).ready(function(){
             $(this).addClass('full');
         }
     });
-
+    
+    $('article').click(function () { return false; });
+    
     $('.parallelogram').css(
         {transform: 'skewX(' + degrees + 'deg)'},
         {'-o-transform': 'skewX(' + degrees + 'deg)'},
