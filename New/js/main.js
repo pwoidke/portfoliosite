@@ -6,6 +6,17 @@ else { var click = 'click'; }
 
 $(document).ready(function(){
 
+    $('.projectResponsibilitiesHeader').click(function () {
+        if($(this).next().is(':visible'))
+        {
+            $(this).next().hide(200);
+        }
+        else
+        {
+            $(this).next().show(200);
+        }
+    });
+
     $('.parallelogram').hover(
         function(){
             if(!$(this).hasClass('full'))

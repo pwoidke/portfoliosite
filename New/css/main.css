@@ -168,6 +168,38 @@ h3 {
     text-align: center;
 }
 
+#projectList {
+    text-align: center;
+    padding: 0;
+}
+
+.projectTitle {
+    margin: 0;
+}
+
+#projectList > li {
+    text-align: left;
+    margin: 1em;
+    display: inline-block;
+    background-color: #ccc;
+    width: auto;
+    height: 400px;
+    overflow: auto;
+    /* border-radius: 30px; */
+    padding: 1em;
+}
+
+.projectResponsibilitiesHeader {
+    margin-bottom: .5em;
+}
+
+.projectResponsibilities {
+    display: none;
+    /* list-style: none; */
+    padding: 0 1em;
+    margin: 0;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -278,6 +310,12 @@ h3 {
 @media only screen and (min-width: 285px) {
     .avatar-frame {
         float: right;
+    }
+}
+
+@media only screen and (min-width: 1050px) {
+    #projectList > li {
+        width: 350px;
     }
 }
 
