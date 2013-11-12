@@ -197,6 +197,11 @@ h3 {
     text-align: center;
 }
 
+#socialLinks a {
+	border: none;
+	text-decoration: none;
+}
+
 #socialLinks a img {
     margin: 20px 10px;
     border: 2px solid white;
@@ -208,6 +213,11 @@ h3 {
 
 #codeLinks {
     text-align: center;
+}
+
+#codeLinks a {
+	border: none;
+	text-decoration: none;
 }
 
 #projectList {
@@ -363,7 +373,7 @@ h3 {
 @media only screen and (min-width: 285px) {
     .avatar-frame {
         float: right;
-        margin: 20px 0;
+        margin: 20px;
     }
 }
 
