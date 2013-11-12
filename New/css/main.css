@@ -149,6 +149,24 @@ h3 {
     font-size: 3.5em;
 }
 
+.avatar-frame {
+    border: 2px solid #fff;
+    float: none;
+    margin: 10px;
+    margin: auto;
+}
+
+.avatar-frame,.avatar-frame img {
+    width: 80px;
+    height: 80px;
+    -webkit-border-radius: 40px; /* Saf3+, Chrome */
+    border-radius: 40px; /* Opera 10.5, IE 9 */
+    /*-moz-border-radius: 30px; Disabled for FF1+ */
+}
+
+#codeLinks {
+    text-align: center;
+}
 
 /* ==========================================================================
    Helper classes
@@ -257,8 +275,10 @@ h3 {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
+@media only screen and (min-width: 285px) {
+    .avatar-frame {
+        float: right;
+    }
 }
 
 @media print,
