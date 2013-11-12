@@ -172,12 +172,25 @@ h3 {
 .avatar-frame {
     border: 2px solid #fff;
     float: none;
-    margin: 10px;
     margin: auto;
+    background-color: white;
 }
 
 .avatar-frame,.avatar-frame img {
     width: 80px;
+    height: 80px;
+    -webkit-border-radius: 40px; /* Saf3+, Chrome */
+    border-radius: 40px; /* Opera 10.5, IE 9 */
+    /*-moz-border-radius: 30px; Disabled for FF1+ */
+}
+
+#socialLinks {
+    text-align: center;
+}
+
+#socialLinks a img {
+    margin: 10px;
+    border: 2px solid white;
     height: 80px;
     -webkit-border-radius: 40px; /* Saf3+, Chrome */
     border-radius: 40px; /* Opera 10.5, IE 9 */
@@ -335,6 +348,7 @@ h3 {
 @media only screen and (min-width: 285px) {
     .avatar-frame {
         float: right;
+        margin: 20px 0;
     }
 }
 
