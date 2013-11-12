@@ -68,9 +68,18 @@ $(document).ready(function(){
             $(this).find('article').show(200);
             $(this).addClass('full');
         }
+        
+        //if ($(".full").length == $(".parallelogram").length)
+        //{
+        //    $('.toggleButton').html("&minus;");
+        //}
+        //else if ($(".full").length == 0)
+        //{
+        //    $('.toggleButton').html("+");
+        //}
     });
     
-    $('article').click(function () { return false; });
+    $('article').click(function (e) { e.stopPropagation(); });
     
     $('.parallelogram').css(
         {transform: 'skewX(' + degrees + 'deg)'},
@@ -93,7 +102,7 @@ $(document).ready(function(){
         }
         else
         {
-            $('.toggleButton').html("&#43;");
+            $('.toggleButton').html("+");
             $('.parallelogram').addClass('full');
         }
         $('.parallelogram').click();
