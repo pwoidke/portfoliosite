@@ -114,12 +114,12 @@ a {
 	transition:all .3s ease-in-out;
 	-moz-transition:all .3s ease-in-out;
 	-webkit-transition:all .3s ease-in-out;
-	border-bottom:1px dotted white;
+	/* border-bottom:1px dotted white; */
 }
 
 a:hover {
 	color: black;
-	border-bottom:1px dotted black;
+	/* border-bottom:1px dotted black; */
 }
 
 .projectTitle a {
