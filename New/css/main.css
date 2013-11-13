@@ -246,6 +246,7 @@ h3 {
     overflow: auto;
     /* border-radius: 30px; */
     padding: 1em;
+    margin: 20px;
 }
 
 .projectResponsibilitiesHeader {
