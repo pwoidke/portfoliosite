@@ -6,7 +6,7 @@ else { var click = 'click'; }
 
 $(document).ready(function(){
 
-/*    $('.projectResponsibilitiesHeader').click(function () {
+    $('.projectResponsibilitiesHeader').click(function () {
         if($(this).next().is(':visible'))
         {
             $(this).next().hide(200);
@@ -16,7 +16,7 @@ $(document).ready(function(){
             $(this).next().show(200);
         }
     });
-*/
+
     $('.parallelogram').hover(
         function(){
             if(!$(this).hasClass('full'))
