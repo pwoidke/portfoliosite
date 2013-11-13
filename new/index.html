@@ -32,6 +32,8 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -91,6 +93,25 @@
                     <article>
                         <!-- TODO: Add GitHub "cards" -->
                         <ul id="projectList">
+                            <!--
+                            <li>
+                                <div class="accordion">
+                                    <h3 class="projectTitle">Developer, Sitefinity Team, NiSource, Inc.</h3>
+                                    <div>
+                                        <p class="projectDates">July 2012 – Present</p>
+                                        <p class="projectDescription">Worked as part of a team to migrate, create, and extend various modules and pages in Telerik Sitefinity for NiSource Inc. and its subsidiaries. Paul worked with ASP.NET, C#, SQL, and various web technologies including HTML, CSS and Javascript to improve existing site content and create new web applications and sites.</p>
+                                    </div>
+                                    <h3 class="projectResponsibilitiesHeader">Project Responsibilities</h3>
+                                    <div>
+                                        <ul class="projectResponsibilities">
+                                            <li>Creation of new features and enhancements for enterprise web sites
+                                            <li>Debugging of applications and documentation of problems and solutions
+                                            <li>Testing to ensure functionality and stability</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            -->
                             <li>
                                 <div class="project">
                                     <h3 class="projectTitle">Developer, Sitefinity Team, NiSource, Inc.</h3>
@@ -202,6 +223,14 @@
         <script src="js/jquery.transit.min.js"></script>
 
         <script src="js/main.js"></script>
+        
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+        <script>
+            $(function() {
+                $( ".accordion" ).accordion();
+            });
+        </script>
         
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
