@@ -93,25 +93,28 @@
                     <article>
                         <!-- TODO: Add GitHub "cards" -->
                         <ul id="projectList">
-                            <!--
+                            
                             <li>
-                                <div class="accordion">
-                                    <h3 class="projectTitle">Developer, Sitefinity Team, NiSource, Inc.</h3>
-                                    <div>
-                                        <p class="projectDates">July 2012 – Present</p>
-                                        <p class="projectDescription">Worked as part of a team to migrate, create, and extend various modules and pages in Telerik Sitefinity for NiSource Inc. and its subsidiaries. Paul worked with ASP.NET, C#, SQL, and various web technologies including HTML, CSS and Javascript to improve existing site content and create new web applications and sites.</p>
-                                    </div>
-                                    <h3 class="projectResponsibilitiesHeader">Project Responsibilities</h3>
-                                    <div>
-                                        <ul class="projectResponsibilities">
-                                            <li>Creation of new features and enhancements for enterprise web sites
-                                            <li>Debugging of applications and documentation of problems and solutions
-                                            <li>Testing to ensure functionality and stability</li>
-                                        </ul>
+                                <div class="project">
+                                    <h2 class="projectTitle">Developer, Sitefinity Team, NiSource, Inc.</h2>
+                                    <p class="projectDates">July 2012 – Present</p>
+                                    <div class="accordion">
+                                        <h3>Project Description</h3>
+                                        <div>
+                                            <p class="projectDescription">Worked as part of a team to migrate, create, and extend various modules and pages in Telerik Sitefinity for NiSource Inc. and its subsidiaries. Paul worked with ASP.NET, C#, SQL, and various web technologies including HTML, CSS and Javascript to improve existing site content and create new web applications and sites.</p>
+                                        </div>
+                                        <h3 class="projectResponsibilitiesHeader">Project Responsibilities</h3>
+                                        <div>
+                                            <ul>
+                                                <li>Creation of new features and enhancements for enterprise web sites
+                                                <li>Debugging of applications and documentation of problems and solutions
+                                                <li>Testing to ensure functionality and stability</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
-                            -->
+                            
                             <li>
                                 <div class="project">
                                     <h3 class="projectTitle">Developer, Sitefinity Team, NiSource, Inc.</h3>
@@ -228,7 +231,10 @@
 
         <script>
             $(function() {
-                $( ".accordion" ).accordion();
+                $( ".accordion" ).accordion({ 
+
+                    heightStyle: "fill" 
+                });
             });
         </script>
         

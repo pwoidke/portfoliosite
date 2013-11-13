@@ -243,7 +243,7 @@ h3 {
     text-align: left;
     width: auto;
     height: 400px;
-    overflow: auto;
+    overflow: hidden;
     /* border-radius: 30px; */
     padding: 1em;
 }
@@ -251,7 +251,7 @@ h3 {
 .projectResponsibilitiesHeader {
     margin-bottom: .5em;
     cursor: pointer;
-    width: 100%;
+    /* width: 100%; */
     color: white;
     background-color: #FF3D0D;
 }
@@ -261,6 +261,10 @@ h3 {
     /* list-style: none; */
     padding: 0 1em;
     margin: 0;
+}
+
+.ui-accordion-content-active {
+    max-height: 120px;
 }
 
 /* ==========================================================================
