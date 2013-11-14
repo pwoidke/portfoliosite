@@ -302,6 +302,10 @@ h3 {
     float: right;
 }
 
+.demo:after {
+    content: ' \2192';
+}
+
 .projectTech {
     list-style: none;
     margin: 0;
