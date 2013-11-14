@@ -6,6 +6,27 @@ else { var click = 'click'; }
 
 $(document).ready(function(){
 
+    $('.projectTech li').each(function () {
+        if($(this).html() === "C#") {
+            $(this).css('background-color', '#5A25A2');
+        }
+        else if($(this).html() === "CSS") {
+            $(this).css('background-color', '#1F085E');
+        }
+        else if($(this).html() === "HTML") {
+            $(this).css('background-color', 'red');
+        }
+        else if($(this).html() === "Javascript") {
+            $(this).css('background-color', '#F15501');
+        }
+        else if($(this).html() === "Obj-C") {
+            $(this).css('background-color', '#438EFF');
+        }
+        else if($(this).html() === "Sass") {
+            $(this).css('background-color', 'red');
+        }
+    });
+    
     $('.parallelogram').hover(
         function(){
             if(!$(this).hasClass('full'))

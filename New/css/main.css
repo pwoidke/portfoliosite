@@ -275,6 +275,44 @@ h3 {
     margin: 0;
 }
 
+.projectDescription a {
+    border-bottom: 1px dotted #333333;
+    color: #000000;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.projectDescription a:hover {
+	color:#FF3D0D;
+	border-bottom:1px dotted #FF3D0D;
+}
+
+.githubProject {
+    text-align: center;
+    margin-top: -10px;
+}
+
+.demo {
+    font-size: small;
+    float: right;
+}
+
+.projectTech {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: white;
+    text-align: center;
+}
+
+.projectTech li {
+    display: inline-block;
+    padding: 0 10px;
+    margin: 2px 0;
+    -webkit-border-radius: 10px; /* Saf3+, Chrome */
+    border-radius: 10px; /* Opera 10.5, IE 9 */
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
