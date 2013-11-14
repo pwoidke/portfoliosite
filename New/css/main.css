@@ -252,6 +252,7 @@ h3 {
 .projectDescription {
     max-height: 220px;
     overflow: auto;
+    clear: both;
 }
 
 .projectDescription a {
