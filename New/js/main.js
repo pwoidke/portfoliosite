@@ -6,17 +6,6 @@ else { var click = 'click'; }
 
 $(document).ready(function(){
 
-    $('.projectResponsibilitiesHeader').click(function () {
-        if($(this).next().is(':visible'))
-        {
-            $(this).next().hide(200);
-        }
-        else
-        {
-            $(this).next().show(200);
-        }
-    });
-
     $('.parallelogram').hover(
         function(){
             if(!$(this).hasClass('full'))
@@ -95,16 +84,41 @@ $(document).ready(function(){
     );
     
     $('.toggleButton').click(function () {
-        if($('.toggleButton').html() === "+")
+        if($(this).html() === "+")
         {
-            $('.toggleButton').html("&minus;");
+            $(this).html("&minus;");
             $('.parallelogram').removeClass('full');
         }
         else
         {
-            $('.toggleButton').html("+");
+            $(this).html("+");
             $('.parallelogram').addClass('full');
         }
         $('.parallelogram').click();
+    });
+    
+    $('.projectResponsibilitiesHeader').click(function () {
+        if($(this).next().is(':visible'))
+        {
+            $(this).next().hide(200);
+        }
+        else
+        {
+            $(this).next().show(200);
+        }
+    });
+    
+    $('.projectResponsibilitiesHeader').click(function () {
+        var toggle = $(this).find('.projectResponsibilitiesHeaderToggle');
+        if(toggle.html() === "+")
+        {
+            toggle.html("&minus;");
+            $(this).next().removeClass('responsibilitiesShow');
+        }
+        else
+        {
+            toggle.html("+");
+            $(this).next().addClass('responsibilitiesShow');
+        }
     });
 });

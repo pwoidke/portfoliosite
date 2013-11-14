@@ -159,6 +159,7 @@ footer {
     margin: .25em;
     width: 13em;
     text-align: left;
+    cursor: pointer;
 }
 
 h3 {
@@ -168,6 +169,7 @@ h3 {
 .parallelogram article {
     display: none;
     margin: 1em;
+    cursor: auto;
 }
 
 .toggleButton {
@@ -233,7 +235,6 @@ h3 {
 #projectList > li {
     -webkit-border-radius: 40px; /* Saf3+, Chrome */
     border-radius: 40px; /* Opera 10.5, IE 9 */
-    /*-moz-border-radius: 30px; Disabled for FF1+ */
     display: inline-block;
     background-color: #ccc;
     margin: 1em;
@@ -244,7 +245,6 @@ h3 {
     width: auto;
     height: 400px;
     overflow: auto;
-    /* border-radius: 30px; */
     padding: 1em;
     margin: 20px;
 }
@@ -254,6 +254,18 @@ h3 {
     cursor: pointer;
     color: white;
     background-color: #FF3D0D;
+    padding: 5px 20px;
+    -webkit-border-radius: 15px; /* Saf3+, Chrome */
+    border-radius: 15px; /* Opera 10.5, IE 9 */
+}
+
+.projectResponsibilitiesHeaderToggle {
+    float: right;
+    color: white;
+    height: 20px;
+    width: 20px;
+    font-size: xx-large;
+    line-height: 0.7;
 }
 
 .projectResponsibilities {
