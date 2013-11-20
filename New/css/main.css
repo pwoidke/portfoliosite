@@ -329,7 +329,9 @@ h3 {
     padding: 1em;
     margin: auto;
     border-radius: 30px;
-    width: auto;
+    width: 55%;
+    min-width: 250px;
+    overflow: hidden;
 }
 
 .jqbar.horizontal span
@@ -461,9 +463,6 @@ h3 {
     .avatar-frame {
         float: right;
         margin: 20px;
-    }
-    #codeSkills {
-        width: 55%;
     }
 }
 
