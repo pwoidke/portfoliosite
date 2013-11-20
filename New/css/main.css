@@ -160,7 +160,6 @@ footer {
     width: 13em;
     text-align: left;
     cursor: pointer;
-    min-width: 290px;
 }
 
 h3 {
@@ -329,17 +328,25 @@ h3 {
     color: black;
     padding: 1em;
     margin: auto;
-    width: 500px;
+    width: 350px;
     border-radius: 30px;
 }
 
-.jqbar .bar-label {
-    text-align: right;
-    width: 100px;
+.jqbar.horizontal span
+{
+    display: inline-block;
+    margin-left: 5px;
+}
+.jqbar.horizontal .bar-percent
+{
+    font-weight: bold;
+    height: 20px;
+    margin-bottom: 5px;
 }
 
-.jqbar .bar-label, .jqbar .bar-percent {
-    margin: 5px;
+.jqbar.horizontal .bar-label {
+    text-align: right;
+    width: 100px;
 }
 
 
