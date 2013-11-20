@@ -328,8 +328,8 @@ h3 {
     color: black;
     padding: 1em;
     margin: auto;
-    width: 350px;
     border-radius: 30px;
+    width: auto;
 }
 
 .jqbar.horizontal span
@@ -457,10 +457,13 @@ h3 {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 285px) {
+@media only screen and (min-width: 400px) {
     .avatar-frame {
         float: right;
         margin: 20px;
+    }
+    #codeSkills {
+        width: 55%;
     }
 }
 

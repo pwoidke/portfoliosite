@@ -85,14 +85,14 @@ $(document).ready(function(){
                 break;
                 case "Code":
                     if(!barsShown) {
-                        $('#jsBar').jqbar({ label: 'Javascript', value: 90, barColor: '#F15501', barWidth: 20 });
-                        $('#jQBar').jqbar({ label: 'jQuery', value: 90, barColor: '#3a89c9', barWidth: 20 });
-                        $('#htmlBar').jqbar({ label: 'HTML', value: 95, barColor: '#FF0000', barWidth: 20 });
-                        $('#cssBar').jqbar({ label: 'CSS', value: 90, barColor: '#1F085E', barWidth: 20 });
-                        $('#sassBar').jqbar({ label: 'SASS', value: 70, barColor: '#FF0000', barWidth: 20 });
-                        $('#csBar').jqbar({ label: 'C#', value: 80, barColor: '#5A25A2', barWidth: 20 });
-                        $('#aspNetBar').jqbar({ label: 'ASP.NET', value: 80, barColor: '#D64747', barWidth: 20 });
-                        $('#objcBar').jqbar({ label: 'Objective-C', value: 60, barColor: '#438EFF', barWidth: 20 });
+                        $('#jsBar').jqbar({ label: 'Javascript', value: 90, barColor: '#F15501', barWidth: 20, barLength: $(this).parent().parent().width()*.25 });
+                        $('#jQBar').jqbar({ label: 'jQuery', value: 90, barColor: '#3a89c9', barWidth: 20, barLength: $(this).parent().parent().width()*.25 });
+                        $('#htmlBar').jqbar({ label: 'HTML', value: 95, barColor: '#FF0000', barWidth: 20, barLength: $(this).parent().parent().width()*.25 });
+                        $('#cssBar').jqbar({ label: 'CSS', value: 90, barColor: '#1F085E', barWidth: 20, barLength: $(this).parent().parent().width()*.25 });
+                        $('#sassBar').jqbar({ label: 'SASS', value: 50, barColor: '#FF0000', barWidth: 20, barLength: $(this).parent().parent().width()*.25 });
+                        $('#csBar').jqbar({ label: 'C#', value: 70, barColor: '#5A25A2', barWidth: 20, barLength: $(this).parent().parent().width()*.25 });
+                        $('#aspNetBar').jqbar({ label: 'ASP.NET', value: 70, barColor: '#D64747', barWidth: 20, barLength: $(this).parent().parent().width()*.25 });
+                        $('#objcBar').jqbar({ label: 'Objective-C', value: 50, barColor: '#438EFF', barWidth: 20, barLength: $(this).parent().parent().width()*.25 });
                         barsShown = true;
                     }
                 break;
