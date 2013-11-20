@@ -1,4 +1,5 @@
 var degrees = -15;
+var barsShown = false;
 
 /*	Define Click Event for Mobile */
 if( 'ontouchstart' in window ){ var click = 'touchstart'; }
@@ -14,7 +15,7 @@ $(document).ready(function(){
             $(this).css('background-color', '#1F085E');
         }
         else if($(this).html() === "HTML") {
-            $(this).css('background-color', 'red');
+            $(this).css('background-color', '#FF0000');
         }
         else if($(this).html() === "Javascript") {
             $(this).css('background-color', '#F15501');
@@ -23,7 +24,7 @@ $(document).ready(function(){
             $(this).css('background-color', '#438EFF');
         }
         else if($(this).html() === "Sass") {
-            $(this).css('background-color', 'red');
+            $(this).css('background-color', '#FF0000');
         }
     });
     
@@ -77,6 +78,36 @@ $(document).ready(function(){
             });
             $(this).find('article').show(200);
             $(this).addClass('full');
+            
+            // Check and trigger section-specific events here
+            switch ($(this).children('h3').html()) {
+                case "About":
+                break;
+                case "Code":
+                    if(!barsShown) {
+                        $('#jsBar').jqbar({ label: 'Javascript', value: 90, barColor: '#F15501', barWidth: 20 });
+                        $('#jQBar').jqbar({ label: 'jQuery', value: 90, barColor: '#3a89c9', barWidth: 20 });
+                        $('#htmlBar').jqbar({ label: 'HTML', value: 95, barColor: '#FF0000', barWidth: 20 });
+                        $('#cssBar').jqbar({ label: 'CSS', value: 90, barColor: '#1F085E', barWidth: 20 });
+                        $('#sassBar').jqbar({ label: 'SASS', value: 70, barColor: '#FF0000', barWidth: 20 });
+                        $('#csBar').jqbar({ label: 'C#', value: 80, barColor: '#5A25A2', barWidth: 20 });
+                        $('#aspNetBar').jqbar({ label: 'ASP.NET', value: 80, barColor: '#D64747', barWidth: 20 });
+                        $('#objcBar').jqbar({ label: 'Objective-C', value: 60, barColor: '#438EFF', barWidth: 20 });
+                        barsShown = true;
+                    }
+                break;
+                case "Projects":
+                break;
+                case "Contact":
+                    var links = $('#socialLinks a img');
+                    var i = 0;
+                    window.setTimeout(function(){
+                        (function displayImages() {  
+                            links.eq(i++).fadeIn(300, displayImages);  
+                        })();
+                    }, 600);
+                break;
+            }
         }
         
         //if ($(".full").length == $(".parallelogram").length)
@@ -142,4 +173,5 @@ $(document).ready(function(){
             $(this).next().addClass('responsibilitiesShow');
         }
     });
+
 });

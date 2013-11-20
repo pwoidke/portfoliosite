@@ -198,6 +198,7 @@ h3 {
 
 #socialLinks {
     text-align: center;
+    min-height: 120px;
 }
 
 #socialLinks a {
@@ -212,6 +213,7 @@ h3 {
     -webkit-border-radius: 40px; /* Saf3+, Chrome */
     border-radius: 40px; /* Opera 10.5, IE 9 */
     /*-moz-border-radius: 30px; Disabled for FF1+ */
+    display: none;
 }
 
 #codeLinks {
@@ -321,6 +323,25 @@ h3 {
     -webkit-border-radius: 10px; /* Saf3+, Chrome */
     border-radius: 10px; /* Opera 10.5, IE 9 */
 }
+
+#codeSkills {
+    background-color: white;
+    color: black;
+    padding: 1em;
+    margin: auto;
+    width: 500px;
+    border-radius: 30px;
+}
+
+.jqbar .bar-label {
+    text-align: right;
+    width: 100px;
+}
+
+.jqbar .bar-label, .jqbar .bar-percent {
+    margin: 5px;
+}
+
 
 /* ==========================================================================
    Helper classes
