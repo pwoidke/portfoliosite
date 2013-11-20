@@ -323,34 +323,6 @@ h3 {
     border-radius: 10px; /* Opera 10.5, IE 9 */
 }
 
-#codeSkills {
-    background-color: white;
-    color: black;
-    padding: 1em;
-    margin: auto;
-    border-radius: 30px;
-    width: 55%;
-    min-width: 250px;
-    overflow: hidden;
-}
-
-.jqbar.horizontal span
-{
-    display: inline-block;
-    margin-left: 5px;
-}
-.jqbar.horizontal .bar-percent
-{
-    font-weight: bold;
-    height: 20px;
-    margin-bottom: 5px;
-}
-
-.jqbar.horizontal .bar-label {
-    text-align: right;
-    width: 120px;
-}
-
 
 /* ==========================================================================
    Helper classes

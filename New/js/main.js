@@ -1,5 +1,4 @@
 var degrees = -15;
-var barsShown = false;
 
 /*	Define Click Event for Mobile */
 if( 'ontouchstart' in window ){ var click = 'touchstart'; }
@@ -84,17 +83,6 @@ $(document).ready(function(){
                 case "About":
                 break;
                 case "Code":
-                    if(!barsShown) {
-                        $('#jsBar').jqbar({ label: 'Javascript', value: 90, barColor: '#F15501', barWidth: 20, barLength: $('body').width()*.25 });
-                        $('#jQBar').jqbar({ label: 'jQuery', value: 90, barColor: '#3a89c9', barWidth: 20, barLength: $('body').width()*.25 });
-                        $('#htmlBar').jqbar({ label: 'HTML', value: 95, barColor: '#FF0000', barWidth: 20, barLength: $('body').width()*.25 });
-                        $('#cssBar').jqbar({ label: 'CSS', value: 90, barColor: '#1F085E', barWidth: 20, barLength: $('body').width()*.25 });
-                        $('#sassBar').jqbar({ label: 'SASS', value: 50, barColor: '#FF0000', barWidth: 20, barLength: $('body').width()*.25 });
-                        $('#csBar').jqbar({ label: 'C#', value: 70, barColor: '#5A25A2', barWidth: 20, barLength: $('body').width()*.25 });
-                        $('#aspNetBar').jqbar({ label: 'ASP.NET', value: 70, barColor: '#D64747', barWidth: 20, barLength: $('body').width()*.25 });
-                        $('#objcBar').jqbar({ label: 'Objective-C', value: 50, barColor: '#438EFF', barWidth: 20, barLength: $('body').width()*.25 });
-                        barsShown = true;
-                    }
                 break;
                 case "Projects":
                 break;
