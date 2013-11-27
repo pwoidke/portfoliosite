@@ -100,6 +100,7 @@ textarea {
 html, body {
     height: 98%;
     min-width: 370px;
+    font-family: 'Roboto', sans-serif;
 }
 
 #container {
