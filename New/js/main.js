@@ -6,6 +6,8 @@ else { var click = 'click'; }
 
 $(document).ready(function(){
 
+    $('#expPlot').scatter({ height: 300, width: '100%', xLabel: 'Proficiency', yLabel: 'Enjoyment', rows: 5, columns: 5, subsections: 4, responsive: true });
+
     $('.projectTech li').each(function () {
         if($(this).html() === "C#") {
             $(this).css('background-color', '#5A25A2');
@@ -87,7 +89,7 @@ $(document).ready(function(){
                 case "Projects":
                 break;
                 case "Contact":
-                    var links = $('#socialLinks a img');
+                    var links = $('#socialLinks').find('a img');
                     var i = 0;
                     window.setTimeout(function(){
                         (function displayImages() {  
@@ -138,6 +140,8 @@ $(document).ready(function(){
     });
     
     $('.projectResponsibilitiesHeader').click(function () {
+        var toggle = $(this).find('.projectResponsibilitiesHeaderToggle');
+
         if($(this).next().is(':visible'))
         {
             $(this).next().hide(200);
@@ -146,10 +150,7 @@ $(document).ready(function(){
         {
             $(this).next().show(200);
         }
-    });
-    
-    $('.projectResponsibilitiesHeader').click(function () {
-        var toggle = $(this).find('.projectResponsibilitiesHeaderToggle');
+
         if(toggle.html() === "+")
         {
             toggle.html("&minus;");

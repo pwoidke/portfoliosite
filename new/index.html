@@ -31,6 +31,7 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/scatterplot.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
@@ -60,7 +61,37 @@
                 <div class="parallelogram">
                     <h3>Code</h3>
                     <article>
-                        <div id="codeLinks">
+                        <div id="expPlotContainer">
+                            <div id="expPlot">
+
+                                <span class="point" style="left: 20%; bottom: 195px; background-color: #DB5855">Clj</span>
+                                <span class="point" style="left: 50%; bottom: 245px; background-color: #438EFF">Obj-C</span>
+                                <span class="point" style="left: 60%; bottom: 95px; background-color: #6E03C1">PHP</span>
+                                <span class="point" style="left: 60%; bottom: 195px; background-color: #701516">S/L</span>
+                                <span class="point" style="left: 60%; bottom: 10px; background-color: #945db7">VB</span>
+                                <span class="point" style="left: 70%; bottom: 195px; background-color: #999">SQL</span>
+                                <span class="point" style="left: 80%; bottom: 195px; background-color: #555">C#</span>
+                                <span class="point" style="left: 80%; bottom: 245px; background-color: #FF0000">HTML</span>
+                                <span class="point" style="left: 90%; bottom: 195px; background-color: #1F085E">CSS</span>
+                                <span class="point" style="left: 90%; bottom: 245px; background-color: #F15501">JS</span>
+
+                            </div>
+                        </div>
+                        <div id="expPlotKey">
+                            <span class="key" style="background-color: #F15501">Javascript</span>
+                            <span class="key" style="background-color: #FF0000">HTML</span>
+                            <span class="key" style="background-color: #1F085E">CSS</span>
+                            <span class="key" style="background-color: #438EFF">Objective-C</span>
+                            <span class="key" style="background-color: #999">SQL</span>
+                            <span class="key" style="background-color: #555">C#</span>
+                            <span class="key" style="background-color: #6E03C1">PHP</span>
+                            <span class="key" style="background-color: #DB5855">Clojure</span>
+                            <span style="display: inline-block">
+                                <span class="key" style="background-color: #701516">SASS/LESS</span>
+                                <span class="key" style="background-color: #945db7">Visual Basic</span>
+                            </span>
+                        </div>
+                        <div class="codeLinks">
                             <h2>Check out my ongoing projects on GitHub or find me on StackOverflow</h2>
                             <a href="https://github.com/pwoidke" target="_blank" style="display: inline-block">
                                 <img src="img/GitHub-Mark-64px.png" height="40" alt="Paul Woidke on GitHub" title="Paul Woidke on GitHub">
@@ -92,13 +123,13 @@
                     <h3>Projects</h3>
                     <article>
                         <!-- TODO: Add GitHub "cards" -->
-                        <ul id="projectList">
+                        <ul class="projectList">
                             <li>
                                 <div class="project">
                                     <h3 class="projectTitle">Developer, Sitefinity Team, NiSource, Inc.</h3>
                                     <p class="projectDates">July 2012 – Present</p>
                                     <p class="projectDescription">Worked as part of a team to migrate, create, and extend various modules and pages in Telerik Sitefinity for NiSource Inc. and its subsidiaries. Paul worked with ASP.NET, C#, SQL, and various web technologies including HTML, CSS and Javascript to improve existing site content and create new web applications and sites.</p>
-                                    <h4 class="projectResponsibilitiesHeader">Project Responsibilities<div class="projectResponsibilitiesHeaderToggle">+</div><div style="clear: both"></div></h4>
+                                    <h4 class="projectResponsibilitiesHeader">Project Responsibilities<span class="projectResponsibilitiesHeaderToggle">+</span><span style="clear: both"></span></h4>
                                     <ul class="projectResponsibilities">
                                         <li>Creation of new features and enhancements for enterprise web sites</li>
                                         <li>Debugging of applications and documentation of problems and solutions</li>
@@ -111,7 +142,7 @@
                                     <h3 class="projectTitle"><a target="_blank" href="http://www.hmbnet.com/egrants">Developer, HMB eGrants</a></h3>
                                     <p class="projectDates">November 2012 – February 2013</p>
                                     <p class="projectDescription">Worked as part of a team to create and enhance educational grants management software for various state departments of education. Paul worked with ASP.NET, C#, SQL, and various web technologies including HTML, CSS and Javascript to add value to new and existing applications.</p>
-                                    <h4 class="projectResponsibilitiesHeader">Project Responsibilities<div class="projectResponsibilitiesHeaderToggle">+</div><div style="clear: both"></div></h4>
+                                    <h4 class="projectResponsibilitiesHeader">Project Responsibilities<span class="projectResponsibilitiesHeaderToggle">+</span><span style="clear: both"></span></h4>
                                     <ul class="projectResponsibilities">
                                         <li>Creation of new features and enhancements for several enterprise web applications</li>
                                         <li>Managing and interfacing with SQL databases to ensure proper functionality</li>
@@ -125,7 +156,7 @@
                                     <h3 class="projectTitle"><a target="_blank" href="http://ohioattorneygeneral.gov/">Web Developer, Ohio Attorney General’s Office</a></h3>
                                     <p class="projectDates">June 2012 – September 2012</p>
                                     <p class="projectDescription">Worked as part of a team charged with migrating the website of the Ohio Attorney General to a new design. Paul worked with Kentico CMS, ASP.NET, HTML, CSS, Javascript, and jQuery to create a functional website to specifications.</p>
-                                    <h4 class="projectResponsibilitiesHeader">Project Responsibilities<div class="projectResponsibilitiesHeaderToggle">+</div><div style="clear: both"></div></h4>
+                                    <h4 class="projectResponsibilitiesHeader">Project Responsibilities<span class="projectResponsibilitiesHeaderToggle">+</span><span style="clear: both"></span></h4>
                                     <ul class="projectResponsibilities">
                                         <li>Migration of site content to new design, including design updates to existing site elements</li>
                                         <li>Documentation of development and system architecture for use by Attorney General’s Office staff</li>
@@ -139,7 +170,7 @@
                                     <h3 class="projectTitle"><a target="_blank" href="https://itunes.apple.com/us/app/bgsu-maps/id517995194">Mobile Application Developer, Agile Software Factory, BGSU</a></h3>
                                     <p class="projectDates">October 2011 – May 2012</p>
                                     <p class="projectDescription">Paul worked as part of a team of 4 developers to create mobile applications for iOS and Android using Eclipse, Xcode and several external libraries and frameworks. As part of this team, Paul worked in an Agile development environment to create an iOS app which displayed a map of the BGSU campus and provided information about various locations, including facilities and directions. This project also included the creation of a database for use in processing location information.</p>
-                                    <h4 class="projectResponsibilitiesHeader">Project Responsibilities<div class="projectResponsibilitiesHeaderToggle">+</div><div style="clear: both"></div></h4>
+                                    <h4 class="projectResponsibilitiesHeader">Project Responsibilities<span class="projectResponsibilitiesHeaderToggle">+</span><span style="clear: both"></span></h4>
                                     <ul class="projectResponsibilities">
                                         <li>Creation of a map application for iOS for use by the students, faculty and visitors of BGSU</li>
                                         <li>Design of various assets including icons, buttons, splash screens, and user interface prototypes</li>
@@ -152,7 +183,7 @@
                                     <h3 class="projectTitle"><a target="_blank" href="http://www.bgsu.edu/virtualcampus/">Virtual Environment Developer, BGSU School of Art</a></h3>
                                     <p class="projectDates">April 2010 – May 2012</p>
                                     <p class="projectDescription">Paul worked as a member of the Virtual Campus team at BGSU where he modeled objects and environments using Maya, Unity 3D, and within Second Life. He also developed interactive objects and environments for use by students, faculty, and the public.</p>
-                                    <h4 class="projectResponsibilitiesHeader">Project Responsibilities<div class="projectResponsibilitiesHeaderToggle">+</div><div style="clear: both"></div></h4>
+                                    <h4 class="projectResponsibilitiesHeader">Project Responsibilities<span class="projectResponsibilitiesHeaderToggle">+</span><span style="clear: both"></span></h4>
                                     <ul class="projectResponsibilities">
                                         <li>Creation of various objects, structures and environments in Second Life and Unity 3D, including virtual art galleries, building and campus tours, and virtual meeting places, classrooms and venues</li>
                                         <li>Creation of video documentation of various events and assets</li>
@@ -163,14 +194,14 @@
                             </li>
                         </ul>
                         <div style="text-align: center">
-                            <div id="codeLinks">
+                            <div class="codeLinks">
 								<a style="display: inline-block" target="_blank" href="https://github.com/pwoidke">
 									<img height="40" title="Paul Woidke on GitHub" alt="Paul Woidke on GitHub" src="img/GitHub-Mark-64px.png">
 									<img height="40" title="Paul Woidke on GitHub" alt="Paul Woidke on GitHub" src="img/GitHub_Logo.png">
 								</a>
 							</div>
                         </div>
-                        <ul id="projectList">
+                        <ul class="projectList">
                             <li>
                                 <div class="project">
                                     <div class="githubProject">
@@ -236,7 +267,7 @@
                         <!-- TODO: Add links to Twitter, LinkedIn, etc. -->
                         <p>Contact me directly at <a href="mailto:paul.woid.ke@gmail.com?Subject=Get%20In%20Touch" target="_top"><b>Paul.Woidke</b> [at] <b>gmail.com</b></a>, or feel free to get in touch via <a href="https://twitter.com/PaulWoidke" target="_blank"><b>Twitter</b></a>. You can also view my page on <a href="https://www.linkedin.com/in/paulwoidke" target="_blank"><b>LinkedIn</b></a>, or find my accounts on <a href="https://github.com/pwoidke" target="_blank"><b>GitHub</b></a> or <a href="http://stackoverflow.com/users/778329/paul-woidke" target="_blank"><b>StackOverflow</b></a>.</p>
                         <div id="socialLinks">
-                            <a href="mailto:paul.woid.ke@gmail.com?Subject=Get%20In%20Touch" target="_top""><img src="img/somacro/email.png" alt="Get it touch via email" /></a>
+                            <a href="mailto:paul.woid.ke@gmail.com?Subject=Get%20In%20Touch" target="_top"><img src="img/somacro/email.png" alt="Get it touch via email" /></a>
                             <a href="https://twitter.com/PaulWoidke" target="_blank"><img src="img/somacro/twitter.png" alt="Get it touch via Twitter" /></a>
                             <a href="https://www.linkedin.com/in/paulwoidke" target="_blank"><img src="img/somacro/linkedin.png" alt="View my profile on LinkedIn" /></a>
                             <div style="display: inline-block">
@@ -259,6 +290,7 @@
         <script src="js/plugins.js"></script>
 
         <script src="js/jquery.transit.min.js"></script>
+        <script src="js/scatterplot.js"></script>
 
         <script src="js/main.js"></script>
         

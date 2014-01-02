@@ -99,7 +99,7 @@ textarea {
 
 html, body {
     height: 98%;
-    min-width: 370px;
+    min-width: 390px;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -175,7 +175,7 @@ h3 {
 
 .toggleButton {
     color: #FF3D0D;
-    float: right;
+    float: right !important;
     margin: 0 20px;
     font-size: 3.5em;
     cursor: pointer;
@@ -216,16 +216,16 @@ h3 {
     display: none;
 }
 
-#codeLinks {
+.codeLinks {
     text-align: center;
 }
 
-#codeLinks a {
+.codeLinks a {
 	border: none;
 	text-decoration: none;
 }
 
-#projectList {
+.projectList {
     text-align: center;
     padding: 0;
     color: black;
@@ -235,7 +235,7 @@ h3 {
     margin: 0;
 }
 
-#projectList > li {
+.projectList > li {
     -webkit-border-radius: 40px; /* Saf3+, Chrome */
     border-radius: 40px; /* Opera 10.5, IE 9 */
     display: inline-block;
@@ -243,7 +243,7 @@ h3 {
     margin: 1em;
 }
 
-#projectList > li .project {
+.projectList > li .project {
     text-align: left;
     width: auto;
     overflow: auto;
@@ -275,7 +275,7 @@ h3 {
     padding: 5px 20px;
     -webkit-border-radius: 15px; /* Saf3+, Chrome */
     border-radius: 15px; /* Opera 10.5, IE 9 */
-    min-width: 150px;
+    min-width: 170px;
 }
 
 .projectResponsibilitiesHeaderToggle {
@@ -322,6 +322,38 @@ h3 {
     margin: 2px 0;
     -webkit-border-radius: 10px; /* Saf3+, Chrome */
     border-radius: 10px; /* Opera 10.5, IE 9 */
+}
+
+#expPlotContainer {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    width: 80%;
+}
+
+.point {
+    padding: 10px 3px 5px;
+    border-radius: 50px;
+    height: 20px;
+    width: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#expPlotKey {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    text-align: center;
+    width: 60%;
+}
+
+.key {
+    border-radius: 30px;
+    font-size: small;
+    display: inline-block;
+    padding: 6px;
+    margin: 5px;
 }
 
 
@@ -439,15 +471,26 @@ h3 {
     }
 }
 
+@media only screen and (min-width: 670px) {
+    .point {
+        padding: 15px 10px 5px;
+        height: 30px;
+        width: 30px;
+    }
+    #expPlotContainer {
+        width: 60%;
+    }
+}
+
 @media only screen and (min-width: 1050px) {
     .projectDescription {
         max-height: 220px;
         overflow: auto;
     }
-    #projectList > li .project {
+    .projectList > li .project {
         height: 400px;
     }
-    #projectList > li {
+    .projectList > li {
         width: 350px;
     }
 }
