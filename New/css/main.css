@@ -324,10 +324,8 @@ h3 {
     border-radius: 10px; /* Opera 10.5, IE 9 */
 }
 
-#expPlotContainer {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 40px;
+.graphContainer {
+    margin: 0 auto 40px;
     width: 80%;
 }
 
@@ -338,6 +336,7 @@ h3 {
     width: 30px;
     text-align: center;
     font-weight: bold;
+    white-space: nowrap;
 }
 
 #expPlotKey {
@@ -356,6 +355,40 @@ h3 {
     margin: 5px;
 }
 
+#skillList {
+    padding: 0;
+    margin: 20px auto;
+    height: 300px;
+    text-align: center;
+
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+
+    background-color: #CCCCCC;
+    background-image: linear-gradient(white 2px, transparent 2px), linear-gradient(90deg, white 2px, transparent 2px), linear-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+    background-size: 20% 20%, 20% 20%, 5% 5%, 5% 5%;
+}
+
+#skillList li {
+    list-style: none;
+    display: inline-block;
+    font-weight: bold;
+}
+
+#skillList li .bar {
+    margin: 50% 0;
+    white-space: nowrap;
+
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
 
 /* ==========================================================================
    Helper classes
@@ -477,7 +510,7 @@ h3 {
         height: 30px;
         width: 30px;
     }
-    #expPlotContainer {
+    .graphContainer {
         width: 60%;
     }
 }
