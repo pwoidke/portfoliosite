@@ -86,11 +86,20 @@ $(document).ready(function(){
             // Check and trigger section-specific events here
             switch ($(this).children('h3').html()) {
                 case "About":
-                break;
+                    break;
                 case "Code":
+                    var points = $('#expPlot').find('.point');
+                    var i = 0;
+                    window.setTimeout(function(){
+                        (function displayPoints() {
+                            points.eq(i++).fadeIn(300, displayPoints);
+                        })();
+                    }, 600);
+                    break;
+                case "Art &amp; Design":
                 break;
                 case "Projects":
-                break;
+                    break;
                 case "Contact":
                     var links = $('#socialLinks').find('a img');
                     var i = 0;
