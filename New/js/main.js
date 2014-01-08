@@ -6,7 +6,7 @@ else { var click = 'click'; }
 
 $(document).ready(function(){
 
-    $('#skillList').find('li').width( Math.floor(100 / $('#skillList').find('li').length) -.7 + "%" );
+    $('#skillList').find('li').width( Math.floor(100 / $('#skillList').find('li').length) - 1 + "%" );
 
     $('#expPlot').scatter({ height: 300, width: '100%', xLabel: 'Proficiency', yLabel: 'Enjoyment', rows: 5, columns: 5, subsections: 4, responsive: true });
     $('#artProgramsGraph').scatter({ height: 300, width: '100%', xLabel: 'Program', yLabel: 'Experience', rows: 5, columns: 5, subsections: 4, responsive: true });
