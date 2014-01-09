@@ -175,4 +175,35 @@ $(document).ready(function(){
         }
     });
 
+
+    /* GALLERY */
+    $('.galRow').each(function (row) {
+        $(this).css({ top: ((row + 1) * -100) });
+    });
+
+    $('.galHCell').click(function () {
+        var galleryContainer = $('#galleryContainer');
+
+        //Color header cell
+        if($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+
+            //Unstack rows
+            galleryContainer.stop(true, true).animate({ height: 120 }).removeClass('expanded');
+            $('.galRow').each(function(row) { $(this).animate({ top: ((row + 1) * -100) }, 500); });
+        }
+        else {
+            $('.galHCell').removeClass('selected');
+            $(this).addClass('selected');
+
+            //Stack rows
+            if(!galleryContainer.hasClass('expanded')) {
+                galleryContainer.stop(true, true).animate({ height: '+=' + $( ".galRow").length * 100 }).addClass('expanded');
+            }
+            $( '.galRow').each(function() { $(this).stop(true, true).animate({ top: 0 }, 500); });
+
+            //Load images
+        }
+    });
+
 });

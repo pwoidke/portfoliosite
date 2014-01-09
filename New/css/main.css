@@ -391,6 +391,53 @@ h3 {
     transform: rotate(90deg);
 }
 
+#galleryContainer {
+    width: 80%;
+    margin: 0 auto;
+    height: 120px;
+}
+
+.galHRow, .galRow {
+    width: 100%;
+}
+
+.galHRow {
+    z-index: 10;
+    background-color: green;
+    display: inline-table;
+    position: relative;
+}
+
+.galRow {
+    z-index: 9;
+    background-color: blue;
+    position: relative;
+    top: -100px;
+}
+
+.galCell {
+    background-color: yellow;
+}
+
+.galHCell, .galRCell, .galCell {
+    display: table-cell;
+    height: 100px;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 5px;
+}
+
+.selected {
+    background-color: red;
+}
+
+/*
+    Start with just a header row with art types
+    On click, one or more rows drop down, one per type of art
+    A row of images expands right from under the row labels to fill grid width
+*/
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
