@@ -197,9 +197,7 @@ h3 {
 .avatar-frame,.avatar-frame img {
     width: 80px;
     height: 80px;
-    -webkit-border-radius: 40px; /* Saf3+, Chrome */
-    border-radius: 40px; /* Opera 10.5, IE 9 */
-    /*-moz-border-radius: 30px; Disabled for FF1+ */
+    border-radius: 40px;
 }
 
 #socialLinks {
@@ -216,9 +214,7 @@ h3 {
     margin: 20px 10px;
     border: 2px solid white;
     height: 80px;
-    -webkit-border-radius: 40px; /* Saf3+, Chrome */
-    border-radius: 40px; /* Opera 10.5, IE 9 */
-    /*-moz-border-radius: 30px; Disabled for FF1+ */
+    border-radius: 40px;
     display: none;
 }
 
@@ -246,8 +242,7 @@ h3 {
 }
 
 .projectList > li {
-    -webkit-border-radius: 40px; /* Saf3+, Chrome */
-    border-radius: 40px; /* Opera 10.5, IE 9 */
+    border-radius: 40px;
     display: inline-block;
     background-color: #ccc;
     margin: 1em;
@@ -284,8 +279,7 @@ h3 {
     color: white;
     background-color: #FF3D0D;
     padding: 5px;
-    -webkit-border-radius: 15px; /* Saf3+, Chrome */
-    border-radius: 15px; /* Opera 10.5, IE 9 */
+    border-radius: 15px;
 }
 
 .title {
@@ -337,8 +331,7 @@ h3 {
     display: inline-block;
     padding: 0 10px;
     margin: 2px 0;
-    -webkit-border-radius: 10px; /* Saf3+, Chrome */
-    border-radius: 10px; /* Opera 10.5, IE 9 */
+    border-radius: 10px;
 }
 
 .graphContainer {
@@ -386,9 +379,7 @@ h3 {
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
 
-    background-color: #CCCCCC;
-    background-image: linear-gradient(white 2px, transparent 2px), linear-gradient(90deg, white 2px, transparent 2px), linear-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
-    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+    background: #CCCCCC linear-gradient(white 2px, transparent 2px), linear-gradient(90deg, white 2px, transparent 2px), linear-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.4) 1px, transparent 1px) -2px -2px, -2px -2px, -1px -1px, -1px -1px;
     background-size: 20% 20%, 20% 20%, 5% 5%, 5% 5%;
 }
 

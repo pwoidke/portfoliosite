@@ -1,12 +1,14 @@
 var degrees = -15;
 
 /*	Define Click Event for Mobile */
-if( 'ontouchstart' in window ){ var click = 'touchstart'; }
-else { var click = 'click'; }
+var click = 'click';
+if( 'ontouchstart' in window ){ click = 'touchstart'; }
 
 $(document).ready(function(){
 
-    $('#skillList').find('li').width( Math.floor(100 / $('#skillList').find('li').length) - 1 + "%" );
+    var parallelograms = $('.parallelogram');
+    var skillList = $('#skillList');
+    skillList.find('li').width( Math.floor(100 / skillList.find('li').length) - 1 + "%" );
 
     $('#expPlot').scatter({ height: 300, width: '100%', xLabel: 'Proficiency', yLabel: 'Passion', rows: 5, columns: 5, subsections: 4, responsive: true });
     $('#artProgramsGraph').scatter({ height: 300, width: '100%', xLabel: 'Program', yLabel: 'Experience', rows: 5, columns: 5, subsections: 4, responsive: true });
@@ -31,8 +33,8 @@ $(document).ready(function(){
             $(this).css('background-color', '#FF0000');
         }
     });
-    
-    $('.parallelogram').hover(
+
+    parallelograms.hover(
         function(){
             if(!$(this).hasClass('full'))
             {
@@ -59,7 +61,7 @@ $(document).ready(function(){
         }
     );
 
-    $('.parallelogram').click(function(){
+    parallelograms.click(function(){
         if($(this).hasClass('full'))
         {
             $(this).find('article').hide(200);
@@ -82,14 +84,14 @@ $(document).ready(function(){
             });
             $(this).find('article').show(200);
             $(this).addClass('full');
-            
+
             // Check and trigger section-specific events here
+            var i = 0;
             switch ($(this).children('h3').html()) {
                 case "About":
                     break;
                 case "Code":
                     var points = $('#expPlot').find('.point');
-                    var i = 0;
                     window.setTimeout(function(){
                         (function displayPoints() {
                             points.eq(i++).fadeIn(300, displayPoints);
@@ -102,7 +104,6 @@ $(document).ready(function(){
                     break;
                 case "Contact":
                     var links = $('#socialLinks').find('a img');
-                    var i = 0;
                     window.setTimeout(function(){
                         (function displayImages() {  
                             links.eq(i++).fadeIn(300, displayImages);  
@@ -111,31 +112,32 @@ $(document).ready(function(){
                 break;
             }
         }
-        
-        //if ($(".full").length == $(".parallelogram").length)
-        //{
-        //    $('.toggleButton').html("&minus;");
-        //}
-        //else if ($(".full").length == 0)
-        //{
-        //    $('.toggleButton').html("+");
-        //}
+
+//        if ($('.full').length === $('.parallelogram').length)
+//        {
+//            $('.toggleButton').html("&minus;");
+//        }
+//
+//        if ($(".full").length == 0)
+//        {
+//            $('.toggleButton').html("+");
+//        }
     });
     
     $('article').click(function (e) { e.stopPropagation(); });
-    
-    $('.parallelogram').css(
-        {transform: 'skewX(' + degrees + 'deg)'},
-        {'-o-transform': 'skewX(' + degrees + 'deg)'},
-        {'-moz-transform': 'skewX(' + degrees + 'deg)'},
-        {'-webkit-transform': 'skewX(' + degrees + 'deg)'}
-    );
-    $('.parallelogram').children().css(
-        {transform: 'skewX(' + -degrees + 'deg)'},
-        {'-o-transform': 'skewX(' + -degrees + 'deg)'},
-        {'-moz-transform': 'skewX(' + -degrees + 'deg)'},
-        {'-webkit-transform': 'skewX(' + -degrees + 'deg)'}
-    );
+
+    parallelograms.css({
+        transform: 'skewX(' + degrees + 'deg)',
+        '-o-transform': 'skewX(' + degrees + 'deg)',
+        '-moz-transform': 'skewX(' + degrees + 'deg)',
+        '-webkit-transform': 'skewX(' + degrees + 'deg)'
+    });
+    parallelograms.children().css({
+        transform: 'skewX(' + -degrees + 'deg)',
+        '-o-transform': 'skewX(' + -degrees + 'deg)',
+        '-moz-transform': 'skewX(' + -degrees + 'deg)',
+        '-webkit-transform': 'skewX(' + -degrees + 'deg)'
+    });
     
     $('.toggleButton').click(function () {
         if($(this).html() === "+")
@@ -148,7 +150,7 @@ $(document).ready(function(){
             $(this).html("+");
             $('.parallelogram').addClass('full');
         }
-        $('.parallelogram').click();
+        parallelograms.click();
     });
     
     $('.projectResponsibilitiesHeader').click(function () {
@@ -177,33 +179,6 @@ $(document).ready(function(){
 
 
     /* GALLERY */
-    $('.galRow').each(function (row) {
-        $(this).css({ top: ((row + 1) * -100) });
-    });
 
-    $('.galHCell').click(function () {
-        var galleryContainer = $('#galleryContainer');
-
-        //Color header cell
-        if($(this).hasClass('selected')) {
-            $(this).removeClass('selected');
-
-            //Unstack rows
-            galleryContainer.stop(true, true).animate({ height: 120 }).removeClass('expanded');
-            $('.galRow').each(function(row) { $(this).animate({ top: ((row + 1) * -100) }, 500); });
-        }
-        else {
-            $('.galHCell').removeClass('selected');
-            $(this).addClass('selected');
-
-            //Stack rows
-            if(!galleryContainer.hasClass('expanded')) {
-                galleryContainer.stop(true, true).animate({ height: '+=' + $( ".galRow").length * 100 }).addClass('expanded');
-            }
-            $( '.galRow').each(function() { $(this).stop(true, true).animate({ top: 0 }, 500); });
-
-            //Load images
-        }
-    });
 
 });
