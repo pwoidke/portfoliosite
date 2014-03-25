@@ -99,8 +99,8 @@ textarea {
 
 html, body {
     height: 98%;
-    min-width: 390px;
     font-family: 'Roboto', sans-serif;
+	min-width: 300px;
 }
 
 #container {
@@ -158,9 +158,15 @@ footer {
     color: white;
     background-color: #FF3D0D;
     margin: .25em;
-    width: 13em;
+    width: 65%;
+	min-width: 6em;
+	max-width: 13em;
     text-align: left;
     cursor: pointer;
+}
+
+.full {
+	max-width: 100%;
 }
 
 h3 {
@@ -225,6 +231,10 @@ h3 {
 	text-decoration: none;
 }
 
+.codeLinks a img {
+	max-height: 50px;
+}
+
 .projectList {
     text-align: center;
     padding: 0;
@@ -241,6 +251,7 @@ h3 {
     display: inline-block;
     background-color: #ccc;
     margin: 1em;
+	width: 80%;
 }
 
 .projectList > li .project {
@@ -248,7 +259,7 @@ h3 {
     width: auto;
     overflow: auto;
     padding: 1em;
-    margin: 20px;
+    margin: 5px;
 }
 
 .projectDescription {
@@ -272,17 +283,23 @@ h3 {
     cursor: pointer;
     color: white;
     background-color: #FF3D0D;
-    padding: 5px 20px;
+    padding: 5px;
     -webkit-border-radius: 15px; /* Saf3+, Chrome */
     border-radius: 15px; /* Opera 10.5, IE 9 */
-    min-width: 170px;
+}
+
+.title {
+	width: 80%;
+	display: inline-block;
 }
 
 .projectResponsibilitiesHeaderToggle {
     float: right;
     color: white;
     height: 20px;
-    width: 15px;
+    width: 20%;
+	display: inline-block;
+	text-align: right;
     font-size: xx-large;
     line-height: 0.7;
 }
@@ -361,6 +378,7 @@ h3 {
     margin: 20px auto;
     height: 300px;
     text-align: center;
+	white-space: nowrap;
 
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
@@ -550,6 +568,17 @@ h3 {
         float: right;
         margin: 20px;
     }
+	
+	.projectList > li .project {
+		text-align: left;
+		width: auto;
+		overflow: auto;
+		padding: 1em;
+	}
+	
+	.projectResponsibilitiesHeader {
+		padding: 5px 20px;
+	}
 }
 
 @media only screen and (min-width: 670px) {

@@ -65,7 +65,7 @@ $(document).ready(function(){
             $(this).find('article').hide(200);
             $(this).animate({
                 skewX: degrees + 'deg',
-                width: '13em'
+                width: '65%'
             }, 200, function(){ $(this).removeClass('full'); });
             $(this).children().animate({
                 skewX: -degrees + 'deg'
