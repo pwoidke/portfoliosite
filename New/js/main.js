@@ -1,28 +1,13 @@
-var degrees = -15;
 
 /*	Define Click Event for Mobile */
 var click = 'click';
 if( 'ontouchstart' in window ){ click = 'touchstart'; }
 
-function checkOpen() {
-    var full = $('.full'),
-        toggleButton = $('#toggleButton');;
-    if (full.length === $('.parallelogram').length)
-    {
-        toggleButton.html("&minus;");
-    }
-
-    if (full.length === 0)
-    {
-        toggleButton.html("+");
-    }
-}
 
 $(document).ready(function(){
 
     var parallelograms = $('.parallelogram'),
-        skillList = $('#skillList'),
-        toggleButton = $('#toggleButton');
+        skillList = $('#skillList');
 
     // Equalize spacing between skill bars in graph
     skillList.find('li').width( Math.floor(100 / skillList.find('li').length) - 1 + "%" );
@@ -52,32 +37,6 @@ $(document).ready(function(){
         }
     });
 
-    parallelograms.hover(
-        function(){
-            if(!$(this).hasClass('full'))
-            {
-                $(this).stop().animate({
-                    skewX: '0deg'
-                });
-                $(this).children().stop().animate({
-                    skewX: '0deg'
-                });
-                $(this).addClass('square');
-            }
-        },
-        function(){
-            if(!$(this).hasClass('full'))
-            {
-                $(this).stop().animate({
-                    skewX: degrees + 'deg'
-                });
-                $(this).children().stop().animate({
-                    skewX: -degrees + 'deg'
-                });
-                $(this).removeClass('square');
-            }
-        }
-    );
 
     parallelograms.click(function(){
         if($(this).hasClass('full'))
@@ -151,43 +110,8 @@ $(document).ready(function(){
             }
         }
     });
-    
-    $('article').click(function (e) { e.stopPropagation(); });
 
-    parallelograms.css({
-        transform: 'skewX(' + degrees + 'deg)',
-        '-o-transform': 'skewX(' + degrees + 'deg)',
-        '-moz-transform': 'skewX(' + degrees + 'deg)',
-        '-webkit-transform': 'skewX(' + degrees + 'deg)'
-    });
-    parallelograms.children().css({
-        transform: 'skewX(' + -degrees + 'deg)',
-        '-o-transform': 'skewX(' + -degrees + 'deg)',
-        '-moz-transform': 'skewX(' + -degrees + 'deg)',
-        '-webkit-transform': 'skewX(' + -degrees + 'deg)'
-    });
 
-    toggleButton.click(function () {
-        if($(this).html() === "+")
-        {
-            parallelograms.each(function(){
-                if(!$(this).hasClass('full')){
-                    $(this).click();
-                }
-            });
-            $(this).html("&minus;");
-        }
-        else
-        {
-            parallelograms.each(function(){
-                if($(this).hasClass('full')){
-                    $(this).click();
-                }
-            });
-            $(this).html("+");
-        }
-    });
-    
     $('.projectResponsibilitiesHeader').click(function () {
         var toggle = $(this).find('.projectResponsibilitiesHeaderToggle');
 
