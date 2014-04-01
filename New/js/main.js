@@ -16,29 +16,6 @@ $(document).ready(function(){
     $('#artProgramsGraph').scatter({ height: 300, width: '100%', xLabel: 'Program', yLabel: 'Experience', rows: 5, columns: 5, subsections: 4, responsive: true });
 
 
-    // Set technology colors
-    $('.projectTech li').each(function () {
-        if($(this).html() === "C#") {
-            $(this).css('background-color', '#5A25A2');
-        }
-        else if($(this).html() === "CSS") {
-            $(this).css('background-color', '#1F085E');
-        }
-        else if($(this).html() === "HTML") {
-            $(this).css('background-color', '#FF0000');
-        }
-        else if($(this).html() === "Javascript") {
-            $(this).css('background-color', '#F15501');
-        }
-        else if($(this).html() === "Obj-C") {
-            $(this).css('background-color', '#438EFF');
-        }
-        else if($(this).html() === "Sass") {
-            $(this).css('background-color', '#FF0000');
-        }
-    });
-
-
     // Show code points when graph is visible
     $('#graphContainer').waypoint(function() {
         var i = 0,
