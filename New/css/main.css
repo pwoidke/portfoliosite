@@ -601,7 +601,7 @@ h4 {
         height: 30px;
         width: 30px;
     }
-    .graphContainer {
+    #graphContainer {
         width: 60%;
     }
 }
