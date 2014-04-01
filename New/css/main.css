@@ -143,6 +143,7 @@ hr {
 nav {
     width: 100%;
     display: table;
+    height: 50px;
 }
 
 nav ul {
@@ -167,20 +168,40 @@ section {
     color: white;
 }
 
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.clear {
+    clear: both;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
 nav ul li:nth-child(1), section:nth-of-type(1) {
-    background: #FF3D0D;
+    background: #1F4BCC;
 }
 
 nav ul li:nth-child(2), section:nth-of-type(2) {
-    background:#00ffff;
+    background: #995645;
 }
 
 nav ul li:nth-child(3), section:nth-of-type(3) {
-    background:#ff00ff;
+    background: #FF0D5A;
 }
 
 nav ul li:nth-child(4), section:nth-of-type(4) {
-    background:#00ff00;
+    background: #82CC1F;
 }
 
 footer {
@@ -192,6 +213,22 @@ footer {
 
 h3 {
     margin: 10px 0;
+}
+
+h4 {
+    margin: 1em 0;
+}
+
+.noBreak {
+    display: inline-block;
+}
+
+.spacer {
+    height: 20px;
+}
+
+.listTitle {
+    width: 105px;
 }
 
 .avatar-frame {
@@ -207,21 +244,30 @@ h3 {
     border-radius: 40px;
 }
 
-#socialLinks {
+#certsList, #langList, #techList {
+    max-width: 567px;
+}
+
+#certsList li, #techList li {
+    margin-bottom: 10px;
+}
+
+#contactLinks {
     text-align: center;
     min-height: 120px;
 }
 
-#socialLinks a {
+#contactLinks a {
 	border: none;
 	text-decoration: none;
 }
 
-#socialLinks a img {
+#contactLinks a img {
     margin: 20px 10px;
     border: 2px solid white;
     height: 80px;
     border-radius: 40px;
+    display: none;
 }
 
 .codeLinks {
@@ -340,7 +386,7 @@ h3 {
     border-radius: 10px;
 }
 
-.graphContainer {
+#graphContainer {
     margin: 0 auto 40px;
     width: 80%;
 }

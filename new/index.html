@@ -52,34 +52,84 @@
 
             <nav>
                 <ul>
-                    <li><h3>Bio</h3></li>
-                    <li><h3>Code</h3></li>
-                    <li><h3>Art</h3></li>
-                    <li><h3>Contact</h3></li>
+                    <li class="linkBio"><h3>Bio</h3></li>
+                    <li class="linkCode"><h3>Code</h3></li>
+                    <li class="linkArt"><h3>Art</h3></li>
+                    <li class="linkContact"><h3>Contact</h3></li>
                 </ul>
             </nav>
 
-            <section>
-                <h3>Bio</h3>
+            <section id="bio">
                 <article>
                     <div class="avatar-frame"><img src="img/me.png" alt="Me" /></div>
-                    <p>Paul Woidke is a software developer in Columbus, OH. He has experience in software development with a strong focus on web and mobile development, specifically in developing applications using .NET technologies like C# and SQL, native iOS applications, and web applications using including HTML, CSS, and Javascript. Paul is a graduate of Bowling Green State University, where he received degrees in Digital Art and Computer Science. He has worked as a student volunteer at ACM SIGGRAPH conference, was a member of Kappa Kappa Psi, National Honorary Band Fraternity, and has formal training in fine arts and graphic design.</p>
+
+                    <h3>Professional Summary</h3>
+                    <p class="spaceAfter">Paul Woidke has experience in software development with a strong focus on web and mobile development. He is experienced in developing applications using technologies including C#, SQL, and ASP.NET, as well as various web technologies including HTML5, CSS3, and Javascript. Paul graduated with honors from Bowling Green State University and received a Bachelor’s of Art in Computer Science and a Bachelor’s of Fine Art in Digital Arts.  He has worked as a student volunteer at ACM SIGGRAPH conference, and was a member of Kappa Kappa Psi, National Honorary Band Fraternity.</p>
+
+                    <div class="spacer"></div>
+
+                    <h3>Education Summary</h3>
+                    <div class="right">
+                        <p><strong>Bowling Green State University</strong></p>
+                        <p>Graduated May 2012 <i>(with Honors)</i></p>
+                    </div>
+                    <div class="left">
+                        <p>Bachelor of Arts, Computer Science</p>
+                        <p>Bachelor of Fine Arts, Digital Art</p>
+                    </div>
+
+                    <div class="clear spacer"></div>
+
+                    <h3>Technical Summary</h3>
+
+                    <div class="left">
+                        <h4 class="listTitle">Certifications:</h4>
+                    </div>
+                    <div class="right">
+                        <ul id="certsList">
+                            <li>MCSD 70-480: Programming in HTML5 with JavaScript and CSS3</li>
+                            <li>MCTS 70-515: Web Applications Development with Microsoft .NET <span class="noBreak">Framework 4</span></li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+
+                    <div class="left">
+                        <h4 class="listTitle">Languages:</h4>
+                    </div>
+                    <div class="right">
+                        <p id="langList">HTML5, CSS3, JavaScript, jQuery, LESS/SASS, PHP, XML, Objective-C, C++, C#, SQL, SQLite, MySQL, LINQ, XAML</p>
+                    </div>
+                    <div class="clear"></div>
+
+                    <div class="left">
+                        <h4 class="listTitle">Technologies:</h4>
+                    </div>
+                    <div class="right">
+                        <ul id="techList">
+                            <li><strong>Web:</strong> Responsive web design, CSS preprocessors including LESS and SASS, Javascript tools including jQuery, jQuery UI and Underscore.js, Content management systems including Telerik Sitefinity and Kentico CMS, Twitter Bootstrap, JetBrains WebStorm
+
+                            <li><strong>Design:</strong> UI/UX design and prototyping, Formal training in art and design, Adobe Creative Suite, 3D modeling and animation using Autodesk Maya, Video production using Adobe Premiere and Final Cut Studio, Virtual environment development using Unity 3D and Second Life
+
+                            <li><strong>Development:</strong> Microsoft Visual Studio, ASP.NET, MVC, AJAX, Multitiered application development, Apple Xcode, Agile and Test-Driven Development, Regular Expressions, Source control applications including Subversion, Team Foundations Server and Git
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
                 </article>
             </section>
 
             <nav>
                 <ul>
-                    <li><h3>Bio</h3></li>
-                    <li><h3>Code</h3></li>
-                    <li><h3>Art</h3></li>
-                    <li><h3>Contact</h3></li>
+                    <li class="linkBio"><h3>Bio</h3></li>
+                    <li class="linkCode"><h3>Code</h3></li>
+                    <li class="linkArt"><h3>Art</h3></li>
+                    <li class="linkContact"><h3>Contact</h3></li>
                 </ul>
             </nav>
 
-            <section>
+            <section id="code">
                 <h3>Code</h3>
                 <article>
-                    <div class="graphContainer">
+                    <div id="graphContainer">
                         <div id="expPlot">
                             <span class="point" style="left: 20%; bottom: 195px; background-color: #DB5855">Clj</span>
                             <span class="point" style="left: 50%; bottom: 245px; background-color: #438EFF">Obj-C</span>
@@ -262,14 +312,14 @@
 
             <nav>
                 <ul>
-                    <li><h3>Bio</h3></li>
-                    <li><h3>Code</h3></li>
-                    <li><h3>Art</h3></li>
-                    <li><h3>Contact</h3></li>
+                    <li class="linkBio"><h3>Bio</h3></li>
+                    <li class="linkCode"><h3>Code</h3></li>
+                    <li class="linkArt"><h3>Art</h3></li>
+                    <li class="linkContact"><h3>Contact</h3></li>
                 </ul>
             </nav>
 
-            <section>
+            <section id="art">
                 <h3>Art &amp; Design</h3>
                 <article>
                     <p>Paul Woidke attended <a href="http://www.bgsu.edu" target="_blank">Bowling Green State University</a> where he obtained a degree in Digital Art with a focus on Animation and Interactive Art. While in school, Paul gained experience in digitial imaging, 3D modeling and animation, video production, and web design. Although his education was focused on the creation of art using digital processes, Paul also has experience with traditional and contemporary mediums including printmaking, digital and film photography, and graphic design.</p>
@@ -301,34 +351,33 @@
                         </a>
                         -->
 
+                        <!--
+                            <h3>Video &amp; Animation</h3>
+                            <article>
+                                TODO: Add list of video projects and link YT/V<br/>
+                                Hopefully this is more than a YouTube video graveyard.
+                            </article>
+                        -->
+
                     </div>
                 </article>
             </section>
 
-            <!--
-            <section>
-                <h3>Video &amp; Animation</h3>
-                <article>
-                    TODO: Add list of video projects and link YT/V<br/>
-                    Hopefully this is more than a YouTube video graveyard.
-                </article>
-            </section>
-            -->
 
             <nav>
                 <ul>
-                    <li><h3>Bio</h3></li>
-                    <li><h3>Code</h3></li>
-                    <li><h3>Art</h3></li>
-                    <li><h3>Contact</h3></li>
+                    <li class="linkBio"><h3>Bio</h3></li>
+                    <li class="linkCode"><h3>Code</h3></li>
+                    <li class="linkArt"><h3>Art</h3></li>
+                    <li class="linkContact"><h3>Contact</h3></li>
                 </ul>
             </nav>
 
-            <section>
+            <section id="contact">
                 <h3>Contact</h3>
                 <article>
                     <p>Contact me directly at <a href="mailto:paul.woid.ke@gmail.com?Subject=Get%20In%20Touch" target="_top"><b>Paul.Woidke</b> [at] <b>gmail.com</b></a>, or feel free to get in touch via <a href="https://twitter.com/PaulWoidke" target="_blank"><b>Twitter</b></a>. You can also view my page on <a href="https://www.linkedin.com/in/paulwoidke" target="_blank"><b>LinkedIn</b></a>, or find my accounts on <a href="https://github.com/pwoidke" target="_blank"><b>GitHub</b></a> or <a href="http://stackoverflow.com/users/778329/paul-woidke" target="_blank"><b>StackOverflow</b></a>.</p>
-                    <div id="socialLinks">
+                    <div id="contactLinks">
                         <a href="mailto:paul.woid.ke@gmail.com?Subject=Get%20In%20Touch" target="_top"><img src="img/somacro/email.png" alt="Get it touch via email" /></a>
                         <a href="https://twitter.com/PaulWoidke" target="_blank"><img src="img/somacro/twitter.png" alt="Get it touch via Twitter" /></a>
                         <a href="https://www.linkedin.com/in/paulwoidke" target="_blank"><img src="img/somacro/linkedin.png" alt="View my profile on LinkedIn" /></a>
@@ -342,7 +391,7 @@
         </div>
 
         <footer>
-            <p>&copy;</p>
+            <p><a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">&copy;</a></p>
         </footer>
 
 
@@ -350,6 +399,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
 
+        <script src="js/waypoints.min.js"></script>
         <script src="js/imagelightbox.min.js"></script>
         <script src="js/scatterplot.js"></script>
 

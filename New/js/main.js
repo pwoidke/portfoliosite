@@ -6,16 +6,17 @@ if( 'ontouchstart' in window ){ click = 'touchstart'; }
 
 $(document).ready(function(){
 
-    var parallelograms = $('.parallelogram'),
-        skillList = $('#skillList');
-
     // Equalize spacing between skill bars in graph
+    var skillList = $('#skillList');
     skillList.find('li').width( Math.floor(100 / skillList.find('li').length) - 1 + "%" );
 
+
+    // Create graphs
     $('#expPlot').scatter({ height: 300, width: '100%', xLabel: 'Proficiency', yLabel: 'Passion', rows: 5, columns: 5, subsections: 4, responsive: true });
     $('#artProgramsGraph').scatter({ height: 300, width: '100%', xLabel: 'Program', yLabel: 'Experience', rows: 5, columns: 5, subsections: 4, responsive: true });
 
-    // Set language background colors
+
+    // Set technology colors
     $('.projectTech li').each(function () {
         if($(this).html() === "C#") {
             $(this).css('background-color', '#5A25A2');
@@ -38,80 +39,53 @@ $(document).ready(function(){
     });
 
 
-    parallelograms.click(function(){
-        if($(this).hasClass('full'))
-        {
-            $(this).find('article').hide(200);
-            $(this).animate({
-                skewX: degrees + 'deg',
-                width: '65%'
-            }, 200, function(){
-                $(this).removeClass('full');
-                checkOpen();
-            });
-            $(this).children().animate({
-                skewX: -degrees + 'deg'
-            });
-        }
-        else
-        {
-            $(this).animate({
-                skewX: '0deg',
-                width: '100%'
-            }, 200, function(){
-                $(this).addClass('full');
-                checkOpen();
-            });
-            $(this).children().animate({
-                skewX: '0deg'
-            });
-            $(this).find('article').show(200);
-
-            // Check and trigger section-specific events here
-            var i = 0;
-            switch ($(this).children('h3').html()) {
-                case "About":
+    // Show code points when graph is visible
+    $('#graphContainer').waypoint(function() {
+        var i = 0,
+            points = $('#graphContainer').find('.point');
+        window.setTimeout(function () {
+            (function displayPoints() {
+                points.eq(i++).fadeIn(300, displayPoints);
+            })();
+        }, 600);
+    }, { offset: 'bottom-in-view' });
 
 
-
-                break;
-                case "Code":
-
-                    // Show points
-                    var points = $('#expPlot').find('.point');
-                    window.setTimeout(function(){
-                        (function displayPoints() {
-                            points.eq(i++).fadeIn(300, displayPoints);
-                        })();
-                    }, 600);
-
-                break;
-                case "Art &amp; Design":
+    // Show contact icons when section is visible
+    $('#contact').waypoint(function() {
+        var i = 0,
+            links = $('#contactLinks').find('a img');
+        window.setTimeout(function () {
+            (function displayImages() {
+                links.eq(i++).fadeIn(300, displayImages);
+            })();
+        }, 600);
+    }, { offset: 'bottom-in-view' });
 
 
-
-                break;
-                case "Projects":
-
-
-
-                break;
-                case "Contact":
-
-                    // Show icons
-                    var links = $('#socialLinks').find('a img');
-                    window.setTimeout(function(){
-                        (function displayImages() {
-                            links.eq(i++).fadeIn(300, displayImages);
-                        })();
-                    }, 600);
-
-                break;
-            }
-        }
+    // Scroll to section on nav button click
+    $('.linkBio').click(function() {
+        $('html, body').animate({
+            scrollTop: $("#bio").offset().top - 48
+        }, 1000);
+    });
+    $('.linkCode').click(function() {
+        $('html, body').animate({
+            scrollTop: $("#code").offset().top - 48
+        }, 1000);
+    });
+    $('.linkArt').click(function() {
+        $('html, body').animate({
+            scrollTop: $("#art").offset().top - 48
+        }, 1000);
+    });
+    $('.linkContact').click(function() {
+        $('html, body').animate({
+            scrollTop: $("#contact").offset().top - 48
+        }, 1000);
     });
 
-
+    // Expand project responsibilities
     $('.projectResponsibilitiesHeader').click(function () {
         var toggle = $(this).find('.projectResponsibilitiesHeaderToggle');
 
