@@ -387,7 +387,7 @@ h4 {
 }
 
 #graphContainer {
-    margin: 0 auto 40px;
+    margin: 40px auto;
     width: 80%;
 }
 
@@ -450,6 +450,11 @@ h4 {
     -o-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
+}
+
+.github {
+    margin-top: 1em;
+    text-align: center;
 }
 
 #galleryContainer {
