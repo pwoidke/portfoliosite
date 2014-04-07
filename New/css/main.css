@@ -297,15 +297,14 @@ h4 {
     border-radius: 40px;
     display: inline-block;
     background-color: #ccc;
-    margin: 1em;
-	width: 80%;
+    margin: 2% 1%;
 }
 
 .projectList > li .project {
     text-align: left;
     width: auto;
     overflow: auto;
-    padding: 1em;
+    padding: 1em .75em;
     margin: 5px;
 }
 
@@ -353,8 +352,12 @@ h4 {
 .projectResponsibilities {
     display: none;
     /* list-style: none; */
-    padding: 0 1em;
+    padding: 0 .5em 1em;
     margin: 0;
+}
+
+.projectResponsibilities li {
+    margin: .5em 0;
 }
 
 .githubProject {
@@ -407,7 +410,7 @@ h4 {
     margin-right: auto;
     margin-bottom: 40px;
     text-align: center;
-    width: 60%;
+    width: 90%;
 }
 
 .key {
@@ -611,11 +614,9 @@ h4 {
         max-height: 220px;
         overflow: auto;
     }
-    .projectList > li .project {
-        height: 400px;
-    }
     .projectList > li {
-        width: 350px;
+        vertical-align: top;
+        width: 45%;
     }
 }
 
