@@ -350,8 +350,6 @@ h4 {
 }
 
 .projectResponsibilities {
-    display: none;
-    /* list-style: none; */
     padding: 0 .5em 1em;
     margin: 0;
 }
@@ -387,6 +385,21 @@ h4 {
     padding: 0 10px;
     margin: 2px 0;
     border-radius: 10px;
+}
+
+.more {
+    display: none;
+    width: 80%;
+    margin: 0 auto 20px;
+    padding: 0.25em 0;
+    text-align: center;
+    background-color: #FF3D0D;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.more h3 {
+    margin: 0;
 }
 
 #graphContainer {
@@ -611,7 +624,6 @@ h4 {
 
 @media only screen and (min-width: 1050px) {
     .projectDescription {
-        max-height: 220px;
         overflow: auto;
     }
     .projectList > li {

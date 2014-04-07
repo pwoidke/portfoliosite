@@ -6,6 +6,11 @@ if( 'ontouchstart' in window ){ click = 'touchstart'; }
 
 $(document).ready(function(){
 
+    // Initialize Javascript
+    $('.more').show();
+    $('.projectResponsibilities').hide();
+    $('.showMore').hide();
+
     // Equalize spacing between skill bars in graph
     var skillList = $('#skillList');
     skillList.find('li').width( Math.floor(100 / skillList.find('li').length) - 1 + "%" );
@@ -91,15 +96,27 @@ $(document).ready(function(){
 
         if($(this).next().is(':visible'))
         {
-            $(this).next().hide(200);
+            $(this).next().slideUp(200);
             toggle.html("+");
-            $(this).next().addClass('responsibilitiesShow');
         }
         else
         {
-            $(this).next().show(200);
+            $(this).next().slideDown(200);
             toggle.html("&minus;");
-            $(this).next().removeClass('responsibilitiesShow');
+        }
+    });
+
+    // Expand additional projects
+    $('.more').click(function () {
+        if($('.showMore').is(':visible'))
+        {
+            $(this).find('h3').text('More');
+            $('.showMore').slideUp();
+        }
+        else
+        {
+            $(this).find('h3').text('Less');
+            $('.showMore').slideDown();
         }
     });
 
