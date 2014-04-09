@@ -22,7 +22,7 @@ $(document).ready(function(){
 
 
     // Set technology colors
-    $('.projectTech li').each(function () {
+    $('.projectTech').find('li').each(function () {
         if($(this).html() === "C#") {
             $(this).css('background-color', '#5A25A2');
         }
@@ -45,9 +45,9 @@ $(document).ready(function(){
 
 
     // Show code points when graph is visible
-    $('#graphContainer').waypoint(function() {
+    $('#code').find('.graphContainer').waypoint(function() {
         var i = 0,
-            points = $('#graphContainer').find('.point');
+            points = $('.graphContainer').find('.point');
         window.setTimeout(function () {
             (function displayPoints() {
                 points.eq(i++).fadeIn(300, displayPoints);
@@ -119,5 +119,8 @@ $(document).ready(function(){
             $('.showMore').slideDown();
         }
     });
+
+    // Lightbox
+    $('.lightbox').imageLightbox();
 
 });

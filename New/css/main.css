@@ -294,6 +294,7 @@ h4 {
 }
 
 .projectList > li {
+    width: 100%;
     border-radius: 40px;
     display: inline-block;
     background-color: #ccc;
@@ -402,7 +403,7 @@ h4 {
     margin: 0;
 }
 
-#graphContainer {
+.graphContainer {
     margin: 40px auto;
     width: 80%;
 }
@@ -474,15 +475,27 @@ h4 {
 }
 
 #galleryContainer {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
-    height: 120px;
 }
 
 #imagelightbox
 {
     position: fixed;
     z-index: 9999;
+}
+
+.thumbs {
+    text-align: center;
+}
+
+.thumbs > div {
+    display: inline-block;
+}
+
+.thumb {
+    height: 100px;
+    margin: 2px 0;
 }
 
 
@@ -617,7 +630,7 @@ h4 {
         height: 30px;
         width: 30px;
     }
-    #graphContainer {
+    .graphContainer {
         width: 60%;
     }
 }
