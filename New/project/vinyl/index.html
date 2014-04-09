@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Vinyl</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+        <link rel="stylesheet" href="css/prettyPhoto.css" />
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="recordList">
+            <header>
+                <h1>Vinyl</h1>
+                <p>Hello world! This is Vinyl.</p>
+                <div class="searchBar">
+                    <input class="search" id="searchBar" placeholder="Search"/>
+                </div>
+                <div class="sortButtons">
+                    <div class="sortButtons">
+                        <div class="sort" data-sort="artist">Sort by Artist</div>
+                        <div class="sort" data-sort="title">Sort by Title</div>
+                    </div>
+                    <div class="sortButtons">
+                        <div class="sort" data-sort="label">Sort by Label</div>
+                        <div class="button" id="sortFormat">Sort by Format</div>
+                    </div>
+                    <div class="sortButtons">
+                        <div class="button" id="sort12">Hide 12"</div>
+                        <div class="button" id="sort10">Hide 10"</div>
+                        <div class="button" id="sort7">Hide 7"</div>
+                    </div>
+                </div>
+                <div class="sortButtons">
+                    <form>
+                        <input type="file" class="button" id="uploadFile" name="uploadFile">
+                    </form>
+                </div>
+            </header>
+
+            <div id="container">
+                <div id="loading">
+                    <img src="img/loading.gif">
+                </div>
+                <div id="shelf"></div>
+            </div>
+
+            <footer>
+                enjoy.
+            </footer>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+        <script>window.jQuery.ui || document.write('<script src="js/vendor/jquery-ui.min.js"><\/script>')</script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+        <script>window._ || document.write('<script src="js/vendor/underscore-min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/xml2json.js"></script>
+        <script src="js/jstorage.js"></script>
+        <script src="js/prettyPhoto.js"></script>
+        <script src="js/list.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- TODO: Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+//Mixins & Variables
+@mixin main-font {
+  font-family: 'Noto Serif', serif, Verdana, sans-serif;
+}
+@mixin table-font {
+  font: normal 14px "trebuchet ms", futura, helvetica, "times new roman", times, serif;
+}
+@mixin border-box {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+$contentWidth: 1024px;
+$titleText: #fff350;
+$bodyText: #DEDEDE;
+$linkText: #B4B5AB;
