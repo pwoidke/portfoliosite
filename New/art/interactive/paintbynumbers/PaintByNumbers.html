@@ -1,0 +1,497 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+
+<!--
+Paint by Numbers
+Created by Paul Woidke (www.paulwoidke.com) - May, 2011
+
+ARTC 4330 Advanced Interactive Art
+Bowling Green State University
+Instructor: Bonnie Mitchell
+
+This program is a mobile app meant to serve as an extremely basic creative platform. The screen displays three buttons and a screen to a user. The buttons are labeled "0" "1" and "Clear". When a user presses 0 or 1, a binary value is displayed on the screen. As more binary characters are pressed, the binary string is converted to hexadecimal characters. After six (6) hex characters have been generated, a 10px by 10px block is generated on the screen, with the color set to the hex value the user created. When the Clear button is pressed, the binary and hex values are reset and the screen is cleared.
+-->
+
+<head> 
+
+<!--
+The following meta tags are in place to identify the page as a mobile app and prevent some events that would normally occur on a web page. The tags set the Apple toolbar to black, prevent user scaling, and sets the initial screen position.
+-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; user-scalable=0;" />
+<meta name="viewport" content="width=device-width, initial-scale =1.0, minimum-scale = 1, maximum-scale = 5" /> 
+
+<!--
+The following links to CSS files cause the screen background to change based on device orientation. Since the Apple iPhone's screen resolution is 320 x 480 pixels, if the screen width is less than 480 it is assumed to be portrait view, and if greater than 479, assumed to be landscape view. The corresponding app backgrounds are made visible or hidden based on screen width.
+-->
+
+<link rel="stylesheet" type="text/css" media="screen" href="vappstyle.css" />
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 480px)" href="happstyle.css" />
+
+<!--
+The following links set images to be the application icon and splash screen.
+-->
+
+<link rel="apple-touch-icon" href="icon.png"/> 
+<link rel="apple-touch-startup-image" href="splash.png" />
+
+<!-- Page title -->
+<title>Paint by Numbers</title>
+
+
+<script type="text/javascript"> 
+ 
+//**********************Standard Functions*****************************  
+function findOffset(obj) {
+    var curX = 0;
+    var curY = 0;
+    if (obj.offsetParent) {   //if the browser supports offsetParent then we can use it
+        do {
+            curX += obj.offsetLeft;  //get left position of the obj and add it to the var.
+            curY += obj.offsetTop;   //gets top position and add it to the var.
+        } while (obj = obj.offsetParent);  // keep doing this until 
+        
+        return {x:curX, y:curY};  //this is a function that returns two values
+	}
+}
+ 
+//************************Initialization*****************************
+
+//The following initializes variables for the canvas context, hexadecimal and binary strings, counters, and screen position.
+//The final variable is used to save a copy of the screen so that it can be redrawn when the device orientation changes.
+
+var canvas, ctx;
+var strBin = "";
+var strHex = "";
+var strBinFull = "";
+var b = 0;
+var h = 0;
+var x = 0;
+var y = 0;
+var imgd;
+
+function init(){
+
+    canvas = document.getElementById('myCanvas');
+    ctx = canvas.getContext('2d');
+
+	document.ontouchmove = function(e) {e.preventDefault();}	//Prevent standard touch and drag screen movement	
+	ctx.onselectstart = function () { return false; }			//Prevent text selection on double tap
+
+	ctx.fillStyle = '#FFF';										//Set fill style
+	ctx.strokeStyle = "rgba(0, 0, 0, 0.0)";						//Set stroke style to clear
+	ctx.textBaseline = 'bottom';								//Set text baseline
+
+	if(window.innerWidth < 480){ /* Portrait mode */			//If screen width is less than 480, the app will display in portrait mode
+		ctx.font         = 'bold 36px sans-serif';				//Set font style
+		ctx.fillText  ("0", 58, 407);							//Draw text for 0, 1, and Clear buttons
+		ctx.fillText  ("1", 238, 407);
+		ctx.fillText ("CLEAR", 95, 467);
+	
+		ctx.fillStyle = '#000';
+		ctx.font         = 'bold 24px sans-serif';
+		ctx.fillText  ("#", 100, 291);							//Draw "#" for initial Hex value
+
+	}
+	else if(window.innerWidth > 479){ /* Landscape mode */		//If screen width is less than 480, the app will display in portrait mode
+		ctx.font         = 'bold 72px sans-serif';				//Set font style
+		ctx.fillText  ("0", 35, 210);							//Draw text for 0, 1, and Clear buttons
+		ctx.fillText  ("1", 405, 210);
+		ctx.font 		= 'bold 36px sans-serif';
+		ctx.fillText ("CLEAR", 175, 307);
+		
+		ctx.fillStyle = '#000';
+		ctx.font         = 'bold 24px sans-serif';
+		ctx.fillText  ("#", 195, 202);							//Draw "#" for initial Hex value
+		
+	}
+	
+    	canvas.addEventListener('click', doClick, false);				//Event listener for click or touch
+		window.addEventListener('resize', initViewChange, false);		//Event listener for screen resize
+}
+
+function renit(){												//This funtion is used to redraw the screen after the initial load. 
+																//This function is required because a different event must be called on screen resize if no buttons have been pressed.
+																//All of the comments from the above init() function can be applied to this function.
+
+    canvas = document.getElementById('myCanvas');
+    ctx = canvas.getContext('2d');
+
+	document.ontouchmove = function(e) {e.preventDefault();}
+	ctx.onselectstart = function () { return false; }
+
+	ctx.fillStyle = '#FFF';
+	ctx.strokeStyle = "rgba(0, 0, 0, 0.0)";
+	ctx.textBaseline = 'bottom';
+
+	if(window.innerWidth < 480){ /* Portrait mode */
+		ctx.font = 'bold 36px sans-serif';
+		ctx.fillText  ("0", 58, 407);
+		ctx.fillText  ("1", 238, 407);
+		ctx.fillText ("CLEAR", 95, 467);
+	
+		ctx.fillStyle = '#000';
+		ctx.font         = 'bold 24px sans-serif';
+		ctx.fillText  ("#" + strHex, 100, 291);
+
+	}
+	else if(window.innerWidth > 479){ /* Landscape mode */
+		ctx.font = 'bold 72px sans-serif';
+		ctx.fillText  ("0", 35, 210);
+		ctx.fillText  ("1", 405, 210);
+		ctx.font 		= 'bold 36px sans-serif';
+		ctx.fillText ("CLEAR", 175, 307);
+		
+		ctx.fillStyle = '#000';
+		ctx.font         = 'bold 24px sans-serif';
+		ctx.fillText  ("#" + strHex, 195, 202);
+		
+	}
+	
+    	canvas.addEventListener('click', doClick, false);
+		window.addEventListener('resize', viewChange, false);
+}
+
+function button0(){													//This function is called when the 0 button is pressed.
+																	//The function adds "0" to the end of the string of binary characters and then increments the counter and returns the string.
+	strBin += "0";
+	strBinFull += "0";
+	b++;
+	
+	return strBin;
+}
+ 
+function button1(){													//This function is called whent the 1 button is pressed.
+																	//The function adds "1" to the end of the string of binary characters and then increments the counter and returns the string.
+	strBin += "1";
+	strBinFull += "1";
+	b++;
+	return strBin;
+}
+
+function buttonClear(){												//This function is called when the Clear button is pressed.
+																	//The function clears all string values, resets counters, and clears any blocks of color from the screen.
+	strBin = "";
+	strHex = "";
+	strBinFull = "";
+	b = 0;
+	h = 0;
+	x = 0;
+	y = 0;
+	if(window.innerWidth < 480)
+		ctx.clearRect(0, 0, 320, 200);
+	else if(window.innerWidth > 479)
+		ctx.clearRect(115,0,251,160);
+}
+
+function conHex(strBin){											//Function to convert binary strings to hexadecimal characters
+	if(strBin == "0000")
+		strHex += "0";
+	else if(strBin == "0001")
+		strHex += "1";
+	else if(strBin == "0010")
+		strHex += "2";
+	else if(strBin == "0011")
+		strHex += "3";
+	else if(strBin == "0100")
+		strHex += "4";
+	else if(strBin == "0101")
+		strHex += "5";
+	else if(strBin == "0110")
+		strHex += "6";
+	else if(strBin == "0111")
+		strHex += "7";
+	else if(strBin == "1000")
+		strHex += "8";
+	else if(strBin == "1001")
+		strHex += "9";
+	else if(strBin == "1010")
+		strHex += "A";
+	else if(strBin == "1011")
+		strHex += "B";
+	else if(strBin == "1100")
+		strHex += "C";
+	else if(strBin == "1101")
+		strHex += "D";
+	else if(strBin == "1110")
+		strHex += "E";
+	else if(strBin == "1111")
+		strHex += "F";
+	return strHex;													//Returns hex character
+}
+
+function drawBox(strHex){											//Function to draw new box on screen when 6 hex characters are made
+	ctx.fillStyle = strHex;											//Fill color is set to value of hex string passed to the function
+	if(window.innerWidth < 480)
+		ctx.fillRect(x, y, 10, 10);									//Box is drawn at next available spot on screen
+	else if(window.innerWidth > 479)
+		ctx.fillRect((x + 115), y, 10, 10);
+
+	if(x < 480)														//If the next open space is not at the end of a row, x is incremented
+		x += 10;
+	else{															//If the box is at the edge of the screen, x is reset and y is incremented to move to a new row
+		y += 10;
+		x = 0;
+		}
+}
+ 
+//**********************Your Functions*****************************
+
+//This function redraws the pixels generated by the user.
+//The saved image data is redrawn on the canvas based on orientation.
+
+function rePaint(){
+
+if(window.innerWidth < 480){
+	ctx.clearRect(0,0,210,240);
+	ctx.putImageData(imgd, 0, 0);
+	}
+else if(window.innerWidth > 479){
+	ctx.clearRect(110,0,260,160);
+	ctx.putImageData(imgd, 115, 0);
+	}
+
+}
+
+//***********************Include this*******************************
+function doClick(e) {
+    canvas = document.getElementById('myCanvas');
+    ctx = canvas.getContext('2d');
+
+	var offset = findOffset(canvas);   //get the offset of the canvas relative to the page    
+    var posX = e.pageX - offset.x;     //find the x position of the mouse
+    var posY = e.pageY - offset.y;     //find the y position of the mouse
+	
+if(window.innerWidth < 480){
+	ctx.clearRect(0, 230, 320, 250);												//On click (or touch), the binary and hexadecimal strings and button labels are redrawn
+	
+    if ((posX > 8) && (posX < 130) && (posY >= 362) && (posY < 409)) {				//Button functions are called based on location of click (or touch)
+		strBin = button0();
+	} else if ((posX > 188) && (posX < 310) && (posY >= 362) && (posY < 409)) {
+		strBin = button1();
+    } else if ((posX >= 8) && (posX < 310) && (posY >= 420) && (posY < 469)) {
+		buttonClear();
+	}	
+}
+else if(window.innerWidth > 479){
+	ctx.clearRect(0, 10, 110, 300);
+	ctx.clearRect(370, 10, 110, 300);
+	ctx.clearRect(110, 160, 260, 160);
+
+	ctx.clearRect(10, 250, 300, 300);
+    if ((posX > 5) && (posX < 110) && (posY >= 5) && (posY < 315)) {
+		strBin = button0();
+	} else if ((posX > 371) && (posX < 476) && (posY >= 5) && (posY < 315)) {
+		strBin = button1();
+    } else if ((posX >= 145) && (posX < 335) && (posY >= 260) && (posY < 310)) {
+		buttonClear();
+	}
+}
+
+if(b>3) {													//When 4 binary values have been entered, 1 hexadecimal character is generated
+		strHex = conHex(strBin);
+		b=0;
+		h++;
+		if(h>5) {
+			drawBox(strHex);
+			h=0;
+			strHex = "";
+			strBinFull = "";
+		}
+	strBin = "";
+	strBinFull += " ";
+	}
+
+if(h < 6) {													//The full binary string is then redrawn to prevent overlapping characters
+	ctx.fillStyle = '#000';
+	ctx.strokeStyle = "rgba(0, 0, 0, 0.0)";
+	ctx.textBaseline 	= 'bottom';
+
+	if(window.innerWidth > 479){
+		ctx.font = 'bold 17px sans-serif';
+		ctx.fillText  (strBinFull, 120, 237);
+	}
+	else if(window.innerWidth < 480){
+		ctx.font = 'bold 20px sans-serif';
+		ctx.fillText  (strBinFull, 15, 340);
+	}
+		
+	ctx.fillStyle 		= '#000';
+	ctx.strokeStyle 	= "rgba(0, 0, 0, 0.0)";
+	ctx.font         	= 'bold 24px sans-serif';
+	
+	}
+	
+	renit();											//The screen is then redrawn and re-initialized
+	
+if(window.innerWidth < 480){
+	imgd = ctx.getImageData(0, 0, 210, 240);			//Color blocks are saved to the 'imgd' variable
+	}
+else if(window.innerWidth > 479){
+	imgd = ctx.getImageData(115, 0, 260, 160);
+	}
+
+}
+
+ 
+function doMousemove(e) {
+ 
+//***********************Include this*******************************
+    var offset = findOffset(canvas);   //get the offset of the canvas relative to the page    
+    var posX = e.pageX - offset.x;     //find the x position of the mouse
+    var posY = e.pageY - offset.y;     //find the y position of the mouse
+   
+//******************************************************************
+}
+
+
+//The following function is called when the screen is resized, either from the user changing the size of the browser window, or from an orientation change.
+
+function viewChange() {	
+
+document.ontouchmove = function(e) {e.preventDefault();}
+
+rePaint();
+
+if(window.innerWidth < 480){ /* Portrait mode */		//Redraws screen content in the event of an orientation change
+	ctx.clearRect(10, 250, 300, 300);
+	ctx.clearRect(320, 0, 160, 480);
+	
+	ctx.fillStyle = '#FFF';
+	ctx.strokeStyle = "rgba(0, 0, 0, 0.0)";
+	ctx.font         = 'bold 36px sans-serif';
+	ctx.textBaseline = 'bottom';
+	ctx.fillText  ("0", 58, 407);
+	ctx.fillText  ("1", 238, 407);
+	ctx.fillText ("CLEAR", 95, 467);
+	
+	ctx.fillStyle = '#000';
+	ctx.font         = 'bold 24px sans-serif';
+	ctx.textBaseline = 'bottom';
+	ctx.fillText  ("#" + strHex, 100, 291);
+	
+	ctx.fillStyle = '#000';
+	ctx.strokeStyle = "rgba(0, 0, 0, 0.0)";
+	ctx.font         = 'bold 73px sans-serif';
+	ctx.textBaseline = 'bottom';
+	ctx.fillText  ("0", 35, 210);
+	}
+
+else if(window.innerWidth > 479){ /* Landscape mode */	//Redraws screen content in the event of an orientation change
+	ctx.clearRect(0, 0, 110, 310);
+	ctx.clearRect(370, 10, 110, 300);
+	ctx.clearRect(110, 160, 260, 160);
+	ctx.clearRect(0, 320, 480, 160);
+
+	ctx.fillStyle = '#FFF';
+	ctx.strokeStyle = "rgba(0, 0, 0, 0.0)";
+	ctx.font         = 'bold 72px sans-serif';
+	ctx.textBaseline = 'bottom';
+	ctx.fillText  ("0", 35, 210);
+	ctx.fillText  ("1", 405, 210);
+	ctx.font 		= 'bold 36px sans-serif';
+	ctx.fillText ("CLEAR", 175, 307);
+	
+	ctx.fillStyle = '#000';
+	ctx.font         = 'bold 24px sans-serif';
+	ctx.textBaseline = 'bottom';
+	ctx.fillText  ("#" + strHex, 195, 202);
+	}
+	
+	ctx.fillStyle = '#000';
+	ctx.strokeStyle = "rgba(0, 0, 0, 0.0)";
+	ctx.textBaseline 	= 'bottom';
+
+	if(window.innerWidth > 479){						//Redraws binary string
+		ctx.font = 'bold 17px sans-serif';
+		ctx.fillText  (strBinFull, 120, 237);
+	}
+	else if(window.innerWidth < 480){					//Redraws binary string
+		ctx.font = 'bold 20px sans-serif';
+		ctx.fillText  (strBinFull, 15, 340);
+	}
+}
+
+
+//The following function is called on a screen resize if no buttons have been pressed by the user.
+//All comments are the same as in the viewChange() function.
+
+function initViewChange() {
+
+document.ontouchmove = function(e) {e.preventDefault();}
+
+if(window.innerWidth < 480){ /* Portrait mode */
+	ctx.clearRect(10, 250, 300, 300);
+	ctx.clearRect(320, 0, 160, 480);
+	
+	ctx.fillStyle = '#FFF';
+	ctx.strokeStyle = "rgba(0, 0, 0, 0.0)";
+	ctx.font         = 'bold 36px sans-serif';
+	ctx.textBaseline = 'bottom';
+	ctx.fillText  ("0", 58, 407);
+	ctx.fillText  ("1", 238, 407);
+	ctx.fillText ("CLEAR", 95, 467);
+	
+	ctx.fillStyle = '#000';
+	ctx.font         = 'bold 24px sans-serif';
+	ctx.textBaseline = 'bottom';
+	ctx.fillText  ("#" + strHex, 100, 291);
+	
+	ctx.fillStyle = '#000';
+	ctx.strokeStyle = "rgba(0, 0, 0, 0.0)";
+	ctx.font         = 'bold 72px sans-serif';
+	ctx.textBaseline = 'bottom';
+	ctx.fillText  ("0", 35, 210);
+	}
+
+else if(window.innerWidth > 479){ /* Landscape mode */
+	ctx.clearRect(0, 0, 110, 310);
+	ctx.clearRect(370, 10, 110, 300);
+	ctx.clearRect(110, 160, 260, 160);
+	ctx.clearRect(0, 320, 480, 160);
+
+	ctx.fillStyle = '#FFF';
+	ctx.strokeStyle = "rgba(0, 0, 0, 0.0)";
+	ctx.font         = 'bold 72px sans-serif';
+	ctx.textBaseline = 'bottom';
+	ctx.fillText  ("0", 35, 210);
+	ctx.fillText  ("1", 405, 210);
+	ctx.font 		= 'bold 36px sans-serif';
+	ctx.fillText ("CLEAR", 175, 307);
+	
+	ctx.fillStyle = '#000';
+	ctx.font         = 'bold 24px sans-serif';
+	ctx.textBaseline = 'bottom';
+	ctx.fillText  ("#" + strHex, 195, 202);
+	}
+	
+	ctx.fillStyle = '#000';
+	ctx.strokeStyle = "rgba(0, 0, 0, 0.0)";
+	ctx.textBaseline 	= 'bottom';
+
+	if(window.innerWidth > 479){
+		ctx.font = 'bold 17px sans-serif';
+		ctx.fillText  (strBinFull, 120, 237);
+	}
+	else if(window.innerWidth < 480){
+		ctx.font = 'bold 20px sans-serif';
+		ctx.fillText  (strBinFull, 15, 340);
+	}
+}
+
+</script> 
+</head> 
+
+<!-- Call init() function on page load -->
+<body onload='init()'>
+<!-- Create canvas -->
+<div id="canvas"><canvas id="myCanvas" width="480" height="480"></canvas></div>
+<!-- 	Divs to hold backgrounds for portrait and landscape orientation
+		Only one is displayed at any given time.					-->
+<div id="vert"><img src="appvert.jpg" width="320" height="480" alt="vertical" /></div>
+<div id="horz"><img src="apphorz.jpg" width="480" height="320" alt="horizontal" /></div>
+</body> 
+</html> 

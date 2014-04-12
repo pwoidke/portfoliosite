@@ -1,0 +1,1152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+
+<!--
+
+Exchange of Knowledge
+
+Created by Paul Woidke (www.PaulWoidke.com)
+December, 2011
+Bowling Green State University
+
+
+ARTIST STATEMENT:
+My piece explores the influence and connections between the past and present through non-linear interaction. I was influenced heavily by an idea in Oxford American Magazine, which asked why students read great writers like Blake, Dickinson, Freud, and Dickens. The article suggested that we consume and explore these works not to impress others at a cocktail party, but to search for our own voice in the works. The article states:
+
+"The best reason to read them is to see if they may know you better than you know yourself. You may find your own suppressed and rejected thoughts flowing back to you with an “alienated majesty.” Reading the great writers, you may have the experience that Longinus associated with the sublime: You feel that you have actually created the text yourself. For somehow your predecessors are more yourself than you are."
+
+In the writings of Jorge Luis Borges, in whose works I occasionally found my own thoughts, this idea is best presented in his short story August 25, 1983. Borges recounts a story of a meeting between his present self and his future self, just before death. The elder Borges tells his younger self that he “will have utterly forgotten this curious prophetic dialogue that is taking place in two times and two places. When you next dream it, you shall be who I am, and you shall be my dream."
+
+My piece exists as an application on a tablet computer. Through touch, the user is able to explore the idea of our predecessors sharing and challenging ideas. The user is prompted throughout the work to enter their ideas, experiences, and wisdom, and, in turn, is presented with the knowledge of those who came before them. Through this interaction, the piece exposes the viewer to new ideas that they may have never realized were their own, about their identity, the nature of thought, and their interaction with the universe. The piece asks the user to give some piece of knowledge, experience, or wisdom, and in return gives an element of knowledge from someone who came before them. By physically taking this idea with them, the viewer makes this idea their own.
+
+-->
+
+<head> 
+
+<!--
+The following meta tags are in place to identify the page as a mobile app and prevent some events that would normally occur on a web page. The tags set the Apple toolbar to black, prevent user scaling, and sets the initial screen position.
+-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; user-scalable=0;" />
+<meta name="viewport" content="width=device-width, initial-scale =1.0, minimum-scale = 1, maximum-scale = 5" /> 
+<style type="text/css">
+* {
+    -webkit-touch-callout:none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-text-size-adjust:none;
+    -webkit-user-select:none;
+	-khtml-user-select: none;
+}
+</style>
+
+<!--
+The following links to javascript files contain the various images to be drawn on the screen.
+-->
+
+<script type="text/javascript" src="meeting1.js"></script>
+<script type="text/javascript" src="meeting2.js"></script>
+<script type="text/javascript" src="meeting3.js"></script>
+<script type="text/javascript" src="meeting4.js"></script>
+<script type="text/javascript" src="sleep.js"></script>
+<script type="text/javascript" src="puzzle.js"></script>
+<script type="text/javascript" src="park.js"></script>
+<script type="text/javascript" src="world.js"></script>
+<script type="text/javascript" src="jung.js"></script>
+<script type="text/javascript" src="matter.js"></script>
+<script type="text/javascript" src="print.js"></script>
+
+<!--
+The following links set images to be the application icon and splash screen.
+-->
+
+<link rel="apple-touch-icon" href="icon.png"/> 
+<link rel="apple-touch-startup-image" href="splash.png" />
+
+<!-- Page title -->
+<title>Exchange of Knowledge</title>
+
+
+
+<script>
+
+//**********************Standard Functions*****************************  
+function findOffset(obj) {
+    var curX = 0;
+    var curY = 0;
+    if (obj.offsetParent) {   //if the browser supports offsetParent then we can use it
+        do {
+            curX += obj.offsetLeft;  //get left position of the obj and add it to the var.
+            curY += obj.offsetTop;   //gets top position and add it to the var.
+        } while (obj = obj.offsetParent);  // keep doing this until 
+        		
+        return {x:curX, y:curY};  //this is a function that returns two values
+	}
+}
+
+//************************Initialization*****************************
+//The following initializes variables for the canvas context, string array, and counters.
+var canvas,ctx, mouseX = 999, mouseY = 999,circles = new Array;
+var num = Math.floor(Math.random()*30-10)+10; 
+
+var kstring;														//Holds user-created string
+var strArray= new Array(); 											//Array for user-created strings
+var fullArray= new Array(); 										//Another array for user-created strings
+var i= 0;															//Click counter
+var x = 0;															//Holds array information
+var xInit = 1;
+var screenNum = 1;													//Variable to set which screen is drawn
+var leftOffset;
+var txtHeight;
+var fontSize;
+var wordArray;
+
+var puzzle5 = false;												//Flags to control user path (used to avoid infinite loops)
+var park6 = false;
+var world7 = false;
+var jung8 = false;
+var matter9 = false;
+
+
+function init()
+{	
+	ontouchmove = function(e) {e.preventDefault();}					//Prevent standard touch and drag screen movement	
+	document.onselectstart = function () { return false; }			//Prevent text selection on double tap
+
+	initCanvas();
+}
+
+function initCanvas()
+{
+	canvas = document.getElementById('mycanvas');
+    ctx = canvas.getContext('2d');
+	
+	switch(screenNum)												//Draws image on screen based on value of screenNum
+	{
+		case(1):
+			drawMeeting1(ctx);
+			drawSkipBox();
+		break;
+		case(2):
+			drawMeeting2(ctx);
+			drawSkipBox();
+		break;
+		case(3):
+			drawMeeting3(ctx);
+			drawSkipBox();
+		break;
+		case(4):
+			drawSleep(ctx);
+		break;
+		case(5):
+			drawPuzzle(ctx);
+		break;
+		case(6):
+			drawPark(ctx);
+		break;
+		case(7):
+			drawWorld(ctx);
+		break;
+		case(8):
+			drawJung(ctx);
+		break;
+		case(9):
+			drawMatter(ctx);
+		break;
+		case(10):
+			drawMeeting3(ctx);
+			drawSkipBox();
+		break;
+		case(11):
+			drawMeeting4(ctx);
+			drawSkipBox();
+		break;
+		case(12):
+			drawMeeting1(ctx);
+			drawSkipBox();
+		break;
+		case(13):
+			drawPrint(ctx);
+			print1Rand();
+		break;
+		
+	}
+	
+	drawText();
+    
+	canvas.addEventListener('mousemove',makeLight,false);		//Event listener (mouse click) (Used for testing)
+	canvas.addEventListener('click',popBubble,false);
+
+	canvas.addEventListener('touchdown',makeLight,false);		//Event listener (touchDown)
+	canvas.addEventListener('touchmove',makeLight,false);		//Event listener (touchEnd)
+	canvas.addEventListener('touchend',popBubble,false);		//Event listener (touchMove)
+	}
+
+function makeLight(e)
+{
+	ctx.clearRect(0,0,canvas.width,canvas.height);
+
+	var offset = findOffset(canvas);   //get the offset of the canvas relative to the page    
+	var posX = e.pageX - offset.x;     //find the x position of the mouse
+    var posY = e.pageY - offset.y;     //find the y position of the mouse
+	
+	switch(screenNum)												//Draws image on screen based on value of screenNum
+	{
+		case(1):
+			drawMeeting1(ctx);
+			drawSkipBox();
+		break;
+		case(2):
+			drawMeeting2(ctx);
+			drawSkipBox();
+		break;
+		case(3):
+			drawMeeting3(ctx);
+			drawSkipBox();
+		break;
+		case(4):
+			drawSleep(ctx);
+		break;
+		case(5):
+			drawPuzzle(ctx);
+		break;
+		case(6):
+			drawPark(ctx);
+		break;
+		case(7):
+			drawWorld(ctx);
+		break;
+		case(8):
+			drawJung(ctx);
+		break;
+		case(9):
+			drawMatter(ctx);
+		break;
+		case(10):
+			drawMeeting3(ctx);
+			drawSkipBox();
+		break;
+		case(11):
+			drawMeeting4(ctx);
+			drawSkipBox();
+		break;
+		case(12):
+			drawMeeting1(ctx);
+			drawSkipBox();
+		break;
+		case(13):
+			drawPrint(ctx);
+		break;
+	}
+		
+	switch(screenNum)												//set color of light
+	{
+		case(1):
+			ctx.fillStyle = "#FCFFAD";
+		break;
+		case(2):
+			ctx.fillStyle = "#FCFFAD";
+		break;
+		case(3):
+			ctx.fillStyle = "#FCFFAD";
+		break;
+		case(4):
+			ctx.fillStyle = "#FCFFAD";
+		break;
+		case(5):
+			ctx.fillStyle = "#000000";
+		break;
+		case(6):
+			ctx.fillStyle = "#201C5A";
+		break;
+		case(7):
+			ctx.fillStyle = "#FFDE17";
+		break;
+		case(8):
+			ctx.fillStyle = "#FCFFAD";
+		break;
+		case(9):
+			ctx.fillStyle = "#000000";
+		break;
+		case(10):
+			ctx.fillStyle = "#FCFFAD";
+		break;
+		case(11):
+			ctx.fillStyle = "#FCFFAD";
+		break;
+		case(12):
+			ctx.fillStyle = "#FCFFAD";
+		break;
+		case(13):
+			ctx.fillStyle = "#FFFFFF";
+		break;
+	}
+	
+	//start drawing
+	ctx.beginPath();
+	//draw arc: arc(x, y, radius, startAngle, endAngle, anticlockwise)
+	ctx.arc(posX, posY, 50, Math.PI*2, 0, true);
+	//end drawing
+	ctx.closePath();
+	//fill it so you could see it
+	ctx.fill();
+	
+	drawText();
+}
+
+function popBubble(e)
+{
+	var offset = findOffset(canvas);   //get the offset of the canvas relative to the page    
+	var posX = e.pageX - offset.x;     //find the x position of the mouse
+    var posY = e.pageY - offset.y;     //find the y position of the mouse
+	
+	if((posX > 924) && (posX <= 1024) && (posY > 668) && (posY <= 768) && (screenNum == 1) || (screenNum == 2) || (screenNum == 3) || (screenNum == 10) || (screenNum == 11) || (screenNum == 12))
+	{
+		if(screenNum == 10)
+			screenNum = 12;
+		else
+			screenNum++;
+			
+		i = 0;
+		initCanvas();
+	}
+	
+	if((posX > leftOffset+487) && (posX <= leftOffset+487+70) && (posY > txtHeight+160) && (posY <= txtHeight+160+fontSize) && (screenNum == 4))
+	{
+		kstring = prompt("What message would you leave for your future self?","");
+		run();															//Prompt user for entry
+		screenNum = 6;
+	}
+	if((posX > leftOffset+120) && (posX <= leftOffset+120+70) && (posY > txtHeight+140) && (posY <= txtHeight+140+fontSize) && (screenNum == 4))
+	{
+		kstring = prompt("What message would you tell yourself in the past?","");
+		run();															//Prompt user for entry
+		screenNum = 7;
+	}
+	if((posX > leftOffset+180) && (posX <= leftOffset+180+75) && (posY > txtHeight+100) && (posY <= txtHeight+100+fontSize) && (screenNum == 5) && (!world7))
+	{
+		kstring = prompt("What lesson would you impart to all of humanity?","");
+		run();															//Prompt user for entry
+		screenNum = 7;
+		puzzle5 = true;
+	}
+	if((posX > leftOffset+372) && (posX <= leftOffset+372+110) && (posY > txtHeight+120) && (posY <= txtHeight+120+fontSize) && (screenNum == 5))
+	{
+		kstring = prompt("Think of the person who has most influenced your life. How have they shaped who you are today?","");
+		run();															//Prompt user for entry
+		screenNum = 10;
+		i = 0;
+	}
+	if((posX > leftOffset+568) && (posX <= leftOffset+568+90) && (posY > txtHeight+60) && (posY <= txtHeight+60+fontSize) && (screenNum == 6) && (!matter9))
+	{
+		kstring = prompt("What do you think about when you can't fall asleep?","");
+		run();															//Prompt user for entry
+		screenNum = 9;
+		park6 = true;
+	}
+	if((posX > leftOffset+75) && (posX <= leftOffset+75+85) && (posY > txtHeight+100) && (posY <= txtHeight+100+fontSize) && (screenNum == 6) && (!puzzle5))
+	{
+		kstring = prompt("Think of the defining moment in your life. What were you thinking?","");
+		run();															//Prompt user for entry
+		screenNum = 5;
+		park6 = true;
+	}
+	if((posX > leftOffset+18) && (posX <= leftOffset+18+55) && (posY > txtHeight) && (posY <= txtHeight+fontSize) && (screenNum == 7) && (!matter9))
+	{
+		kstring = prompt("What would you change in your past?","");
+		run();															//Prompt user for entry
+		screenNum = 9;
+		world7 = true;
+	}
+	if((posX > leftOffset+462) && (posX <= leftOffset+462+85) && (posY > txtHeight+40) && (posY <= txtHeight+40+fontSize) && (screenNum == 7) && (!jung8))
+	{
+		kstring = prompt("What is God?","");
+		run();															//Prompt user for entry
+		screenNum = 8;
+		world7 = true;
+	}
+	if((posX > leftOffset+97) && (posX <= leftOffset+97+50) && (posY > txtHeight+100) && (posY <= txtHeight+100+fontSize) && (screenNum == 8))
+	{
+		kstring = prompt("What is your dream?","");
+		run();															//Prompt user for entry
+		screenNum = 10;
+		i = 0;
+	}
+	if((posX > leftOffset) && (posX <= leftOffset+90) && (posY > txtHeight+20) && (posY <= txtHeight+20+fontSize) && (screenNum == 8) && (!park6))
+	{
+		kstring = prompt("Who do you hope to be in the future?","");
+		run();															//Prompt user for entry
+		screenNum = 6;
+		jung8 = true;
+	}
+	if((posX > leftOffset+445) && (posX <= leftOffset+445+45) && (posY > txtHeight) && (posY <= txtHeight+fontSize) && (screenNum == 9) && (!jung8))
+	{
+		kstring = prompt("What do you hope to see humanity achieve?","");
+		run();															//Prompt user for entry
+		screenNum = 8;
+		matter9 = true;
+	}
+	if((posX > leftOffset+152) && (posX <= leftOffset+152+60) && (posY > txtHeight+60) && (posY <= txtHeight+60+fontSize) && (screenNum == 9) && (!puzzle5))
+	{
+		kstring = prompt("What is the greatest thing you have ever done in your life?","");	
+		run();															//Prompt user for entry
+		screenNum = 5;
+		matter9 = true;
+	}
+	if((posX > leftOffset+632) && (posX <= leftOffset+632+75) && (posY > txtHeight+20) && (posY <= txtHeight+20+fontSize) && (screenNum == 9))
+	{
+		kstring = prompt("What is the Meaning of Life?","");
+		run();															//Prompt user for entry
+		screenNum = 10;
+		i = 0;
+	}
+	if((posX > 5) && (posX <= canvas.width) && (posY > 5) && (posY <= canvas.height) && (screenNum == 13))
+	{
+		var retval = window.confirm('Restart?'); 
+		if(retval)
+			{
+				xInit = x;
+				screenNum = 1;
+				i = 0;
+			}															//Prompt user for entry
+	}
+	if((posX > 0) && (posX <= 5) && (posY > 0) && (posY <= 5) && (screenNum == 13))
+	{
+		kstring = prompt("Please enter text","");
+		run();															//Prompt user for entry
+	}
+	
+	i++;
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+	switch(screenNum)												//Draws image on screen based on value of screenNum
+	{
+		case(1):
+			drawMeeting1(ctx);
+			drawSkipBox();
+		break;
+		case(2):
+			drawMeeting2(ctx);
+			drawSkipBox();
+		break;
+		case(3):
+			drawMeeting3(ctx);
+			drawSkipBox();
+		break;
+		case(4):
+			drawSleep(ctx);
+		break;
+		case(5):
+			drawPuzzle(ctx);
+		break;
+		case(6):
+			drawPark(ctx);
+		break;
+		case(7):
+			drawWorld(ctx);
+		break;
+		case(8):
+			drawJung(ctx);
+		break;
+		case(9):
+			drawMatter(ctx);
+		break;
+		case(10):
+			drawMeeting3(ctx);
+			drawSkipBox();
+		break;
+		case(11):
+			drawMeeting4(ctx);
+			drawSkipBox();
+		break;
+		case(12):
+			drawMeeting1(ctx);
+			drawSkipBox();
+		break;
+		case(13):
+			drawPrint(ctx);
+		break;
+	}
+	
+	drawText();
+	
+}
+
+function drawText() {
+	ctx.textBaseline = "top";
+	ctx.font = "15pt Arial";
+	ctx.fillStyle="#FF0000";
+	fontSize = 20;
+	
+	switch(screenNum)
+	{
+		case(1):
+			leftOffset = 180;
+			txtHeight = 60;
+			ctx.fillStyle = "#000000";
+			switch(i)
+			{
+				case(0):
+				break;
+				case(1):
+					alert("George is sitting alone in his office at his desk working on some papers. There is a knock at the door.", leftOffset, txtHeight);
+					i++;
+					drawText();
+				break;
+				case(2):
+					ctx.fillText("LINDA. Sorry to disturb you George but there is a man here who insists on seeing you.", leftOffset, txtHeight);
+				break;
+				case(3):
+					ctx.fillText("GEORGE. All right, show him in Linda.", leftOffset, txtHeight);
+				break;
+				case(4):
+					alert("A man with an uncanny resemblance to George enters the room.", leftOffset, txtHeight);
+					i++;
+					drawText();
+				break;
+				case(5):
+					ctx.fillText("GEORGE40. Hello George. Thanks for meeting me. May I sit down?", leftOffset, txtHeight);
+				break;
+				case(6):
+					ctx.fillText("GEORGE. Yes do. Can you tell me who you are and what you want?", leftOffset, txtHeight);
+				break;
+				case(7):
+					screenNum++;
+					i = 0;
+					initCanvas();
+				break;
+			}
+		break;
+		case(2):
+			leftOffset = 140;
+			txtHeight = 60;
+			ctx.fillStyle = "#000000";
+			switch(i)
+			{
+				case(0):
+					ctx.fillText("GEORGE40. I'm afraid not just yet. We must wait for someone else to arrive. He won't be long.", leftOffset, txtHeight);
+				break;
+				case(1):
+					ctx.fillText("GEORGE Look I'm very busy. If you can't tell me now I will have to ask you to leave.", leftOffset, txtHeight);
+				break;
+				case(2):
+					ctx.fillText("GEORGE40. No please. He will be here...", leftOffset, txtHeight);
+				break;
+				case(3):
+					ctx.fillText("About... now.", leftOffset, txtHeight);
+				break;
+				case(4):
+					alert("There is another knock at the door and Linda walks in again.");
+					i++;
+					drawText();
+				break;
+				case(5):
+					ctx.fillText("LINDA. I'm sorry George but there is another man here and he wants to speak to you too.", leftOffset, txtHeight); 
+					ctx.fillText("He says he's expected. But I have no appointment in my diary.", leftOffset, txtHeight+fontSize);
+				break;
+				case(6):
+					ctx.fillText("GEORGE. That's OK Linda, just show him in.", leftOffset, txtHeight);
+				break;
+				case(7):
+					alert("An older man with beard enters the room and looks at the other visitor who rises from his chair.");
+					i++;
+					drawText();
+				break;
+				case(8):
+					ctx.fillText("GEORGE60. Good to see you again.", leftOffset, txtHeight);
+				break;
+				case(9):
+					ctx.fillText("GEORGE40. Likewise.", leftOffset, txtHeight);
+				break;
+				case(10):
+					screenNum++;
+					i = 0;
+					initCanvas();
+				break;
+			}
+		break;
+		case(3):
+			leftOffset = 140;
+			txtHeight = 60;
+			ctx.fillStyle = "#000000";
+			
+			switch(i)
+			{
+				case(0):
+					ctx.fillText("GEORGE. Excuse me but can you please tell me what all this is about. Now.", leftOffset, txtHeight);
+					ctx.fillText("Before I call security.", leftOffset, txtHeight+fontSize);
+				break;
+				case(1):
+					ctx.fillText("GEORGE40. He always was a bit pushy.", leftOffset, txtHeight);
+				break;
+				case(2):
+					ctx.fillText("GEORGE60. Yes but he'll mellow with age.", leftOffset, txtHeight);
+				break;
+				case(3):
+					ctx.fillText("GEORGE. Gentlemen!", leftOffset, txtHeight);
+				break;
+				case(4):
+					ctx.fillText("GEORGE40. Yes sorry. Please sit down George this may come as a bit of a shock to you.", leftOffset, txtHeight);
+				break;
+				case(5):
+					ctx.fillText("GEORGE40. I am you aged 40.", leftOffset, txtHeight);
+				break;
+				case(6):
+					ctx.fillText("GEORGE60. And I am you aged 60.", leftOffset, txtHeight);
+				break;
+				case(7):
+					ctx.fillText("GEORGE. And I'm the Queen of Sheba!", leftOffset, txtHeight);
+				break;
+				case(8):
+					ctx.fillText("GEORGE40. No please listen. We are telling the truth. We are you in the future.", leftOffset, txtHeight);
+					ctx.fillText("Can't you see the resemblance?", leftOffset, txtHeight+fontSize);
+				break;
+				case(9):
+					ctx.fillText("GEORGE. Well there is a bit. But that could be coincidence.", leftOffset, txtHeight);
+				break;
+				case(10):
+					ctx.fillText("GEORGE40. Shall we prove it to you?", leftOffset, txtHeight);
+				break;
+				case(11):
+					ctx.fillText("GEORGE. Go on then.", leftOffset, txtHeight);
+				break;
+				case(12):
+					ctx.fillText("GEORGE60. Your partner Jayne will come in through that door over there in a moment", leftOffset, txtHeight);
+					ctx.fillText("wearing a long red dress.", leftOffset, txtHeight+fontSize);
+				break;
+				case(13):
+					ctx.fillText("GEORGE. Oh well that's wrong. She has no red dress.", leftOffset, txtHeight);
+				break;
+				case(14):
+					alert("At that moment the door burst open and in walked George's partner Jayne wearing a red dress.");
+					i++;
+					drawText();
+				break;
+				case(15):
+					ctx.fillText("JAYNE. George can you have a look at these figures, I think...What's the matter?", leftOffset, txtHeight);
+					ctx.fillText("You look like you've seen a ghost!", leftOffset, txtHeight+fontSize);
+				break;
+				case(16):
+					ctx.fillText("GEORGE. You're wearing a red dress.", leftOffset, txtHeight);
+				break;
+				case(17):
+					ctx.fillText("JAYNE. Yes. Do you like it? I bought it this lunchtime. I didn't feel like taking it off after", leftOffset, txtHeight);
+					ctx.fillText("I tried it on in the shop.", leftOffset, txtHeight+fontSize);
+				break;
+				case(18):
+					alert("She did a small twirl and sees George's guests.", leftOffset, txtHeight);
+					i++;
+					drawText();
+				break;
+				case(19):
+					ctx.fillText("JAYNE. Oh sorry George, I didn't realise you were in a meeting. I'll come back later.", leftOffset, txtHeight);
+				break;
+				case(20):
+					alert("She leaves as abruptly as she came in.");
+					i++;
+					drawText();
+				break;
+				case(21):
+					ctx.fillText("GEORGE40. Convinced yet?", leftOffset, txtHeight);
+				break;
+				case(22):
+					ctx.fillText("GEORGE. No, could just be coincidence again.", leftOffset, txtHeight);
+				break;
+				case(23):
+					ctx.fillText("GEORGE60. Perhaps we should move on to the question.", leftOffset, txtHeight);
+				break;
+				case(24):
+					ctx.fillText("GEORGE. Question?", leftOffset, txtHeight);
+				break;
+				case(25):
+					ctx.fillText("GEORGE40. Yes. What we thought you should do is ask us a question. Any question at all.", leftOffset, txtHeight);
+					ctx.fillText("It's up to you. You will have the choice, but of course we both know what it will be.", leftOffset, txtHeight+fontSize);
+					ctx.fillText("So we have written it down on a piece of paper already. It's in this envelope.", leftOffset, txtHeight+(fontSize*2));
+				break;
+				case(26):
+					alert("He places a sealed envelope on the desk in front of George.");
+					i++;
+					drawText();
+				break;
+				case(27):
+					ctx.fillText("GEORGE. OK. Any question?", leftOffset, txtHeight);
+				break;
+				case(28):
+					ctx.fillText("GEORGE60. Anything at all.", leftOffset, txtHeight);
+				break;
+				case(29):
+					ctx.fillText("GEORGE. All right. What was the population of Toronto in 1986? There a bit more adventurous", leftOffset, txtHeight);
+					ctx.fillText("than what's my favourite colour? Wasn't it? Let's see what you've written.", leftOffset, txtHeight+fontSize);
+				break;
+				case(30):
+					alert("He opens the envelope.");
+					i++;
+					drawText();
+				break;
+				case(31):
+					ctx.fillText("GEORGE. I should have guessed. \"What was the population of Toronto in 1986?\"", leftOffset, txtHeight);
+					ctx.fillText("But why have you written the word green afterwards?", leftOffset, txtHeight+fontSize);
+				break;
+				case(32):
+					ctx.fillText("GEORGE40. It's your favourite colour isn't it?", leftOffset, txtHeight);
+				break;
+				case(33):
+					ctx.fillText("GEORGE60. Oh and by the way since we've had time to find out the answer it's 3,427,168.", leftOffset, txtHeight);
+				break;
+				case(34):
+					alert("There is a long pause...");
+					i++;
+					drawText();
+				break;
+				case(35):
+					screenNum++;
+					i = 0;
+					initCanvas();
+				break;
+			}
+		break;
+		case(4):
+			leftOffset = 380;
+		    txtHeight = 100;
+			ctx.fillStyle = "#000000";
+			ctx.fillText("The reason to read Blake and Dickinson and", leftOffset, txtHeight);
+    		ctx.fillText("Freud and Dickens is not to become more cultivated,", leftOffset, txtHeight+fontSize);
+    		ctx.fillText("or more articulate, or to be someone who, at a cocktail", leftOffset, txtHeight+(2*fontSize));
+    		ctx.fillText("party, is never embarrassed (or who can embarrass others).", leftOffset, txtHeight+(3*fontSize));
+    		ctx.fillText("The best reason to read them is to see if they may know you", leftOffset, txtHeight+(4*fontSize));
+    		ctx.fillText("better than you know yourself. You may find your own", leftOffset, txtHeight+(5*fontSize));
+    		ctx.fillText("suppressed and rejected thoughts flowing back to you with", leftOffset, txtHeight+(6*fontSize));
+    		ctx.fillText("an “alienated            .” Reading the great writers, you may", leftOffset, txtHeight+(7*fontSize));
+    		ctx.fillText("have the experience that Longinus associated with the            :", leftOffset, txtHeight+(8*fontSize));
+    		ctx.fillText("You feel that you have actually created the text yourself.", leftOffset, txtHeight+(9*fontSize));
+    		ctx.fillText("For somehow your predecessors are more yourself than you are.", leftOffset, txtHeight+(10*fontSize));
+			ctx.fillStyle = "#FF0000";
+			ctx.fillText("sublime",leftOffset+487,txtHeight+160);
+			ctx.fillText("majesty",leftOffset+120,txtHeight+140);
+		break;
+		case(5):
+			leftOffset = 30;
+		    txtHeight = 30;
+			ctx.fillStyle = "#A1A3A6";
+			ctx.fillText("They did this study. They isolated a group of people over time,", leftOffset, txtHeight);
+			ctx.fillText("and they monitored their abilities at crossword puzzles in relation to the general population.", leftOffset, txtHeight+fontSize);
+    		ctx.fillText("And one day they secretly gave them a day-old crossword,", leftOffset, txtHeight+(2*fontSize));
+    		ctx.fillText("one that had already been answered by thousands of other people.", leftOffset, txtHeight+(3*fontSize));
+    		ctx.fillText("And their scores went up dramatically... like 20 percent.", leftOffset, txtHeight+(4*fontSize));
+    		ctx.fillText("So it's like once the               are out there, people can pick up on them.", leftOffset, txtHeight+(5*fontSize));
+    		ctx.fillText("It's like we're all telepathically sharing our                   .", leftOffset, txtHeight+(6*fontSize));
+			ctx.fillStyle = "#FCFFAD";
+			if(!world7)
+				ctx.fillText("answers",leftOffset+180,txtHeight+100);
+			else
+			{
+				ctx.fillStyle = "#A1A3A6";
+				ctx.fillText("answers",leftOffset+180,txtHeight+100);
+			}
+			ctx.fillStyle = "#FCFFAD";
+			ctx.fillText("experiences",leftOffset+372,txtHeight+120);
+		break;
+		case(6):
+			leftOffset = 180;
+			txtHeight = 100;
+			ctx.fillStyle = "#FFFFFF";
+			ctx.fillText("About twelve days ago, I was giving a lecture in La Plata on Book VI of the Aeneid.", leftOffset, txtHeight);
+    		ctx.fillText("Suddenly, as I was scanning a hexameter, I discovered what my path was to be.", leftOffset, txtHeight+fontSize);
+    		ctx.fillText("I made this decision- and since that moment, I have felt myself invulnerabe.", leftOffset, txtHeight+(2*fontSize));
+    		ctx.fillText("You shall one day meet that fate- you shall receive that sudden                ,", leftOffset, txtHeight+(3*fontSize));
+    		ctx.fillText("in the midst of Latin and Virgil, yet you will have utterly forgotten this", leftOffset, txtHeight+(4*fontSize));
+    		ctx.fillText("curious                  dialogue that is taking place in two times and two places.", leftOffset, txtHeight+(5*fontSize));
+    		ctx.fillText("When you next dream it, you shall be who I am, and you shall be my dream.", leftOffset, txtHeight+(6*fontSize));
+			ctx.fillStyle = "#007700";
+			if(!matter9)
+				ctx.fillText("revelation",leftOffset+568,txtHeight+60);
+			else
+			{
+				ctx.fillStyle = "#FFFFFF";
+				ctx.fillText("revelation",leftOffset+568,txtHeight+60);
+			}
+			ctx.fillStyle = "#007700";
+			if(!puzzle5)
+				ctx.fillText("prophetic",leftOffset+75,txtHeight+100);
+			else
+			{
+				ctx.fillStyle = "#FFFFFF";
+				ctx.fillText("prophetic",leftOffset+75,txtHeight+100);
+			}
+		break;
+		case(7):
+			leftOffset = 280;
+			txtHeight = 120;
+			ctx.fillStyle = "#201C5A";
+			ctx.fillText("A           is not an ideology nor a scientific institution,", leftOffset, txtHeight);
+    		ctx.fillText("nor is it even a system of ideologies;", leftOffset, txtHeight+fontSize);
+	    	ctx.fillText("rather, it is a structure of unconscious relations and                processes.", leftOffset, txtHeight+(2*fontSize));
+			ctx.fillStyle = "#00DD00";
+			if(!matter9)
+				ctx.fillText("World",leftOffset+18,txtHeight);
+			else
+			{
+				ctx.fillStyle = "#201C5A";
+				ctx.fillText("World",leftOffset+18,txtHeight);
+			}
+			ctx.fillStyle = "#00DD00";
+			if(!jung8)
+				ctx.fillText("symbiotic",leftOffset+462,txtHeight+40);
+			else
+			{
+				ctx.fillStyle = "#201C5A";
+				ctx.fillText("symbiotic",leftOffset+462,txtHeight+40);
+			}
+		break;
+		case(8):
+			leftOffset = 620;
+			txtHeight = 450;
+			ctx.fillStyle = "#000000";
+			ctx.fillText("Jung was at pains to stress the", leftOffset, txtHeight);
+    		ctx.fillText("                quality of experiences,", leftOffset, txtHeight+fontSize);
+    		ctx.fillText("and there can be no doubt that he was", leftOffset, txtHeight+(2*fontSize));
+    		ctx.fillText("attracted to the idea that the archetypes", leftOffset, txtHeight+(3*fontSize));
+    		ctx.fillText("afford evidence of some communion", leftOffset, txtHeight+(4*fontSize));
+    		ctx.fillText("with some           or world mind.", leftOffset, txtHeight+(5*fontSize));
+			ctx.fillStyle = "#990000";
+			if(!park6)
+				ctx.fillText("numinous",leftOffset,txtHeight+20);
+			else
+			{
+				ctx.fillStyle = "#000000";
+				ctx.fillText("numinous",leftOffset,txtHeight+20);
+			}
+			ctx.fillStyle = "#990000";
+			ctx.fillText("divine",leftOffset+97,txtHeight+100);
+		break;
+		case(9):
+			leftOffset = 180;
+			txtHeight = 100;
+			ctx.fillStyle = "#FFDE17";
+			ctx.fillText("All matter originates and exists only by virtue of a ", leftOffset, txtHeight);
+			ctx.fillText("which brings the particles of an atom to vibration which holds the atom              .", leftOffset, txtHeight+fontSize);
+    		ctx.fillText("We must assume behind this force is the existence of a conscious and intelligent mind.", leftOffset, txtHeight+(2*fontSize));
+    		ctx.fillText("This mind is the             of all matter.", leftOffset, txtHeight+(3*fontSize));
+			ctx.fillStyle = "#EE0000";
+			if(!jung8)
+				ctx.fillText("force",leftOffset+445,txtHeight);
+			else
+			{
+				ctx.fillStyle = "#FFDE17";
+				ctx.fillText("force",leftOffset+445,txtHeight);
+			}
+			ctx.fillStyle = "#EE0000";
+			if(!puzzle5)
+				ctx.fillText("matrix",leftOffset+152,txtHeight+60);
+			else
+			{
+				ctx.fillStyle = "#FFDE17";
+				ctx.fillText("matrix",leftOffset+152,txtHeight+60);
+			}
+			ctx.fillStyle = "#EE0000";
+			ctx.fillText("together",leftOffset+632,txtHeight+20);
+		break;
+		case(10):
+			leftOffset = 140;
+			txtHeight = 60;
+			ctx.fillStyle = "#000000";
+			switch(i)
+			{
+				case(0):
+					ctx.fillText("GEORGE40. Time for tea.", leftOffset, txtHeight);
+				break;
+				case(1):
+					alert("There is a knock at the door. It opens and Linda brings in a tray of tea and biscuits.");
+					i++;
+					drawText();
+				break;
+				case(2):
+					ctx.fillText("LINDA. I thought you might like some refreshments.", leftOffset, txtHeight);
+				break;
+				case(3):
+					ctx.fillText("GEORGE. Thank you Linda.", leftOffset, txtHeight);
+				break;
+				case(4):
+					alert("After pouring out three cups she leaves.");
+					i++;
+					drawText();
+				break;
+				case(5):
+					ctx.fillText("GEORGE40. Ah there is nothing like a good cuppa.", leftOffset, txtHeight);
+				break;
+				case(6):
+					ctx.fillText("GEORGE60. And these biscuits are great. Now is this my third biscuit or the same one", leftOffset, txtHeight);
+					ctx.fillText("I've eaten three times I wonder?", leftOffset, txtHeight+fontSize);
+				break;
+				case(7):
+					ctx.fillText("GEORGE40. You asked that last time.", leftOffset, txtHeight);
+				break;
+				case(8):
+					ctx.fillText("GEORGE60. Yes and I still don't know the answer.", leftOffset, txtHeight);
+				break;
+				case(9):
+					ctx.fillText("GEORGE. Excuse me gentlemen but I'm finding it difficult to take this all in.", leftOffset, txtHeight);
+				break;
+				case(10):
+					ctx.fillText("GEORGE40. Yes we know.", leftOffset, txtHeight);
+				break;
+				case(11):
+					alert("George 40 leans over and whispers to George 60 \"Perhaps he should go and look out the window\"", leftOffset, txtHeight);
+					i++;
+					drawText();
+				break;
+				case(12):
+					ctx.fillText("GEORGE. What was that?", leftOffset, txtHeight);
+				break;
+				case(13):
+					ctx.fillText("GEORGE40. Nothing.", leftOffset, txtHeight);
+				break;
+				case(14):
+					alert("George gets up and walks to the window.");
+					i++;
+					drawText();
+				break;
+				case(15):
+					ctx.fillText("GEORGE. If I understand you correctly you're telling me that you are both me in the future", leftOffset, txtHeight);
+					ctx.fillText("and have come back in time not once but twice? It's ridiculous. There is no such thing", leftOffset, txtHeight+fontSize);
+					ctx.fillText("as time travel.", leftOffset, txtHeight+(fontSize*2));
+				break;
+				case(16):
+					ctx.fillText("GEORGE60. Not in 2011 there isn't. But later.", leftOffset, txtHeight);
+				break;
+				case(17):
+					ctx.fillText("GEORGE. Presumably I don't discover it?", leftOffset, txtHeight);
+				break;
+				case(18):
+					ctx.fillText("GEORGE40. No. Just use it. It becomes freely available.", leftOffset, txtHeight);
+				break;
+				case(19):
+					ctx.fillText("GEORGE60. Look on the bright side though. You will live until at least my age.", leftOffset, txtHeight);
+				break;
+				case(20):
+					ctx.fillText("GEORGE. Yes. But I'll make every effort not to grow that beard!", leftOffset, txtHeight);
+				break;
+				case(21):
+					ctx.fillText("GEORGE60. Why, what's wrong with it?", leftOffset, txtHeight);
+				break;
+				case(22):
+					ctx.fillText("GEORGE. Can you tell me anything about the future?", leftOffset, txtHeight);
+				break;
+				case(23):
+					ctx.fillText("GEORGE40. No we can't. You don't need to know anyway.", leftOffset, txtHeight);
+				break;
+				case(24):
+					ctx.fillText("GEORGE. You are not allowed then by law?", leftOffset, txtHeight);
+				break;
+				case(25):
+					ctx.fillText("GEORGE40. Yes. The Law of Physics.", leftOffset, txtHeight);
+				break;
+				case(26):
+					ctx.fillText("GEORGE. So we can't touch either or we'll both explode. Yes?", leftOffset, txtHeight);
+				break;
+				case(27):
+					ctx.fillText("GEORGE40. Not really. You've been watching too many science fiction movies.", leftOffset, txtHeight);
+				break;
+				case(28):
+					alert("He holds out his hand and George takes it hesitantly.");
+					i++;
+					drawText();
+				break;
+				case(29):
+					ctx.fillText("GEORGE40. See. No fireworks. We are 20 years apart. We share no common atoms.", leftOffset, txtHeight);
+					ctx.fillText("There is no problem.", leftOffset, txtHeight+fontSize);
+				break;
+				case(30):
+					alert("George 60 touches their hands as well.");
+					i++;
+					drawText();
+				break;
+				case(31):
+					ctx.fillText("GEORGE60. Me too. Another 20 years difference.", leftOffset, txtHeight);
+				break;
+				case(32):
+					ctx.fillText("GEORGE. Look at your fingers! That mark on your middle finger of you right hands.", leftOffset, txtHeight);
+					ctx.fillText("It's the same as mine. You are me!", leftOffset, txtHeight+fontSize);
+				break;
+				case(33):
+					ctx.fillText("GEORGE40. I do believe he's got it.", leftOffset, txtHeight);
+				break;
+				case(34):
+					ctx.fillText("GEORGE60. Better late than never.", leftOffset, txtHeight);
+				break;
+				case(35):
+					alert("George sits back in his chair deep in shock.");
+					i++;
+					drawText();
+				break;
+				case(36):
+					ctx.fillText("GEORGE40. Well we must be going now. Our time is limited.", leftOffset, txtHeight);
+				break;
+				case(37):
+					ctx.fillText("GEORGE60. Just finish this tea. Amazing how one pot can last 40 years!", leftOffset, txtHeight);
+				break;
+				case(38):
+					ctx.fillText("GEORGE40. I'll see you both again in 20 years then. Bye..", leftOffset, txtHeight);
+				break;
+				case(39):
+					alert("He leaves the room.");
+					i++;
+					drawText();
+				break;
+				case(40):
+					screenNum++;
+					i = 0;
+					initCanvas();
+				break;
+			}		
+		break;
+		case(11):
+			leftOffset = 140;
+			txtHeight = 60;
+			ctx.fillStyle = "#000000";
+			
+			switch(i)
+			{
+				case(0):
+					ctx.fillText("GEORGE60. It was great to see you again George. All the best for the future.", leftOffset, txtHeight);
+					ctx.fillText("Don't worry too much. You'll feel better after a good nights sleep. Bye.", leftOffset, txtHeight+fontSize);
+				break;
+				case(1):
+					alert("He leaves the room. The connecting door opens and Jayne enters.");
+					i++;
+					drawText();
+				break;
+				case(2):
+					screenNum++;
+					i = 0;
+					initCanvas();
+				break;
+			}
+		break;
+		case(12):
+			leftOffset = 140;
+			txtHeight = 60;
+			ctx.fillStyle = "#000000";
+			
+			switch(i)
+			{
+				case(0):
+					ctx.fillText("JAYNE. Are you all right George? You look pale.", leftOffset, txtHeight);
+				break;
+				case(1):
+					ctx.fillText("GEORGE. Yes. I think so. I've just had the most unusual meeting of my life.", leftOffset, txtHeight);
+					ctx.fillText("And it looks like I'll have it again...", leftOffset, txtHeight+fontSize);
+				break;
+				case(2):
+					ctx.fillText("And again...", leftOffset, txtHeight);
+				break;
+				case(3):
+					screenNum++;
+					i = 0;
+					initCanvas();
+				break;
+			}
+		break;
+		case(13):
+			leftOffset = 300;
+			txtHeight = 300;
+			
+			wordArray = kstring.split(" ", 50);
+						
+			for(var k = wordArray.length; k < 50; k++)
+			{
+					wordArray[k] = "";
+			}
+			
+			ctx.fillStyle = "#000000";
+			ctx.fillText(wordArray[0] + " " + wordArray[1] + " " + wordArray[2] + " " + wordArray[3] + " " + wordArray[4], leftOffset, txtHeight);
+			ctx.fillText(wordArray[5] + " " + wordArray[6] + " " + wordArray[7] + " " + wordArray[8] + " " + wordArray[9], leftOffset, txtHeight+20);
+			ctx.fillText(wordArray[10] + " " + wordArray[11] + " " + wordArray[12] + " " + wordArray[13] + " " + wordArray[14], leftOffset, txtHeight+40);
+			ctx.fillText(wordArray[15] + " " + wordArray[16] + " " + wordArray[17] + " " + wordArray[18] + " " + wordArray[19], leftOffset, txtHeight+60);
+			ctx.fillText(wordArray[20] + " " + wordArray[21] + " " + wordArray[22] + " " + wordArray[23] + " " + wordArray[24], leftOffset, txtHeight+80);
+			ctx.fillText(wordArray[25] + " " + wordArray[26] + " " + wordArray[27] + " " + wordArray[28] + " " + wordArray[29], leftOffset, txtHeight+100);
+			ctx.fillText(wordArray[30] + " " + wordArray[31] + " " + wordArray[32] + " " + wordArray[33] + " " + wordArray[34], leftOffset, txtHeight+120);
+			ctx.fillText(wordArray[35] + " " + wordArray[36] + " " + wordArray[37] + " " + wordArray[38] + " " + wordArray[39], leftOffset, txtHeight+140);
+			ctx.fillText(wordArray[40] + " " + wordArray[41] + " " + wordArray[42] + " " + wordArray[43] + " " + wordArray[44], leftOffset, txtHeight+160);
+			ctx.fillText(wordArray[45] + " " + wordArray[46] + " " + wordArray[47] + " " + wordArray[48] + " " + wordArray[49], leftOffset, txtHeight+180);
+		break;
+	}
+}
+
+
+function drawSkipBox()
+{
+	ctx.fillStyle = "#FFFFFF";
+	ctx.rect(924, 668, 100, 100);
+	ctx.fill();
+	ctx.textBaseline = "top";
+	ctx.font = "18pt Arial";
+	ctx.fillStyle="#000000";
+	fontSize = 20;
+	ctx.fillText("SKIP", 954, 708);
+}
+
+function run()
+{	
+	if(kstring == "PRINTALL")				//Print 1 string at random
+	{
+		printAll();
+	}
+	
+	if ((kstring != "END") && (kstring != null) && (kstring != ""))
+	{
+		strArray[x] = kstring;
+		fullArray[x] = kstring;
+		x++;
+	}
+	
+	if(kstring == "END")
+	{
+		var r=confirm("Print all strings?");
+		if (r==true)
+		{
+			printAll();
+		}
+	
+		alert("program finished");
+	}
+}
+
+
+function print1Rand()
+{	
+	/* generate random number: */
+	var randID=Math.floor(Math.random()*strArray.length);
+	
+	while(randID >= xInit)
+	{
+		randID=Math.floor(Math.random()*strArray.length);
+	}
+	
+	kstring = strArray[randID];
+	
+	strArray.splice(randID,1);
+	
+	x--;
+}
+
+function printAll()
+{	
+	/* print all strings */
+	for(var k = 0; k < fullArray.length; k++)
+	{
+		document.write(k + " " + fullArray[k] + "<br>");
+	}
+}
+
+</script>
+    
+</head>
+<body onload="init()">
+
+<canvas id="mycanvas" width='1024px' height='768px' style="position:absolute; top:0px; left:0px;"></canvas>
+
+</body>
+</html>
