@@ -106,17 +106,20 @@ $(document).ready(function(){
         }
     });
 
-    // Expand additional projects
+    // Expand sections
     $('.more').click(function () {
-        if($('.showMore').is(':visible'))
+
+        var showMore = $(this).prev('.showMore');
+
+        if(showMore.is(':visible'))
         {
             $(this).find('h3').text('More');
-            $('.showMore').slideUp();
+            showMore.slideUp();
         }
         else
         {
             $(this).find('h3').text('Less');
-            $('.showMore').slideDown();
+            showMore.slideDown();
         }
     });
 
