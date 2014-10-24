@@ -97,6 +97,12 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 html, body {
     height: 98%;
     font-family: 'Roboto', sans-serif;
@@ -164,7 +170,7 @@ nav ul li {
 section {
     padding: 20px 5%;
     text-align: left;
-    width: 90%;
+    width: 100%;
     color: white;
 }
 
