@@ -423,6 +423,9 @@ h4 {
     font-weight: bold;
     white-space: nowrap;
     display: none;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
 }
 
 #expPlotKey {
