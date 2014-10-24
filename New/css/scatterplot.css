@@ -3,6 +3,9 @@
     left: 0;
     bottom: 0;
     font-size: small;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
 }
 
 .x-Label, .y-Label {

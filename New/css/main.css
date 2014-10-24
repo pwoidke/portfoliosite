@@ -110,7 +110,7 @@ html, body {
 }
 
 #container {
-    width: 85%;
+    width: 90%;
     margin: 0 auto;
     min-height: 94%;
 }
@@ -631,6 +631,9 @@ h4 {
 }
 
 @media only screen and (min-width: 670px) {
+    #container {
+        width: 85%;
+    }
     .point {
         padding: 15px 10px 5px;
         height: 30px;
