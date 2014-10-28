@@ -225,6 +225,12 @@ h4 {
     margin: 1em 0;
 }
 
+::-moz-selection { color: white;  background: #FF3D0D; }
+::selection      { color: white;  background: #FF3D0D; } 
+
+#art ::-moz-selection, .linkArt ::-moz-selection { color: white;  background: #1F4BCC; }
+#art ::selection, .linkArt ::selection { color: white;  background: #1F4BCC; }
+
 .noBreak {
     display: inline-block;
 }
