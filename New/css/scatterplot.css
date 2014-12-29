@@ -2,7 +2,7 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    font-size: small;
+    font-size: 0.83em;
 }
 
 .x-Label, .y-Label {
