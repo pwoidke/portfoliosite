@@ -106,7 +106,7 @@ textarea {
 html, body {
     height: 98%;
     font-family: 'Roboto', sans-serif;
-	min-width: 300px;
+	min-width: 200px;
 }
 
 #container {
@@ -423,6 +423,7 @@ footer ::selection { color: #FFF;  background: #1F4BCC; }
 }
 
 .graphContainer {
+    display: none;
     margin: 40px auto;
     width: 80%;
 }
@@ -516,7 +517,8 @@ footer ::selection { color: #FFF;  background: #1F4BCC; }
 }
 
 .thumb {
-    width: 180px;
+    width: 100%;
+    max-width: 180px;
     margin: 2px 0;
 }
 
@@ -631,6 +633,16 @@ footer ::selection { color: #FFF;  background: #1F4BCC; }
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
+
+@media only screen and (min-width: 300px) {
+    .graphContainer {
+        display: block;
+    }
+
+    .thumb {
+        width: 180px;
+    }
+}
 
 @media only screen and (min-width: 400px) {
     .avatar-frame {
