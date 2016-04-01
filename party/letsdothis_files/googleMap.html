@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style type="text/css">
+		html,
+		body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		
+		#map {
+			height: 100%;
+		}
+		
+		#title {
+			font-weight: bold;
+			font-size: large;
+		}
+		
+		a {
+			color: black;
+			text-decoration: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="map"></div>
+	<script type="text/javascript">
+		var map;
+
+		function initMap() {
+			var map = new google.maps.Map(document.getElementById('map'), {
+				center: {
+					lat: 40.127627,
+					lng: -82.947657
+				},
+				zoom: 16,
+				draggable: !("ontouchend" in document)
+			});
+
+			var marker = new google.maps.Marker({
+				position: {
+					lat: 40.126627,
+					lng: -82.947657
+				},
+				map: map,
+				title: 'Everal Barn & Homestead'
+			});
+
+			var contentString = '<div id="content">' +
+				'<div id="title"><a href="https://www.google.com/maps/place/Everal+Barn+%26+Homestead/@40.1264285,-82.9483926,17.83z/data=!4m2!3m1!1s0x8838f50306ecb0d3:0x11bdfb0d71a03fa3" target="_blank">Everal Barn & Homestead</a></div>' +
+				'<div id="details"><a href="https://www.google.com/maps/place/Everal+Barn+%26+Homestead/@40.1264285,-82.9483926,17.83z/data=!4m2!3m1!1s0x8838f50306ecb0d3:0x11bdfb0d71a03fa3" target="_blank">60 N Cleveland Ave Westerville, OH 43081</a></div>' +
+				"</div>";
+
+			var infowindow = new google.maps.InfoWindow({
+				content: contentString
+			});
+
+
+			marker.setMap(map);
+			infowindow.open(map, marker);
+		}
+	</script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcHu-2xydP3RG9tl4iH_2BECcm5gYfu-4&&callback=initMap">
+	</script>
+</body>
+
+</html>
