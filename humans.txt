@@ -3,7 +3,7 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Paul Woidke -- Developer -- @PaulWoidke
 
 # THANKS
 
