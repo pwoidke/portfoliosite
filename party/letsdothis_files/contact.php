@@ -13,12 +13,11 @@
 	    margin-top: 10px;
 	}
 	
-	#send-success {
-		
-	}
-	
-	#send-fail {
-		
+	#send-success, #send-fail {
+		font: normal normal normal 17px/1.4em din-next-w01-light, din-next-w02-light, din-next-w10-light, sans-serif;
+		color: #605E5E;
+		text-align: center;
+		text-decoration: none;
 	}
 
 	#contact-form input[type="text"],
@@ -134,11 +133,13 @@
 	<form id="contact-form" action="" method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="action" value="submit">
 		<label for="name">Name:</label>
-		<input name="name" placeholder="Name" type="text" required>
+		<input name="name" placeholder="Name" type="text">
 		<label for="email">Email:</label>
-		<input name="email" placeholder="Email" type="email" required>
+		<input name="email" placeholder="Email" type="email">
 		<label for="phone">Phone:</label>
-		<input name="phone" placeholder="Phone" type="tel" required>
+		<input name="phone" placeholder="Phone" type="tel">
+		<label for="music">Music suggestions:</label>
+		<input name="music" placeholder="Music suggestions" type="text">
 		<label for="message">Your message:</label>
 		<textarea name="message" placeholder="Message"></textarea>
 		<button name="submit" type="submit" class="submit" id="contact-submit">Send It</button>
@@ -149,20 +150,19 @@
 	   	$name=$_REQUEST['name'];
 		$email=$_REQUEST['email'];
 		$phone=$_REQUEST['phone'];
+		$music=$_REQUEST['music'];
 		$message=$_REQUEST['message'];
 		
-		if (($name=="")||($email=="")||($phone==""))
-		{
-			echo "<div id=\"send-fail\">All fields are required, please fill <a href=\"\">the form</a> again.</div>";
-		}
-		else {
+		if (($name=="") && ($email=="") && ($phone=="") && ($music=="") && ($message=="")) {
+			echo "<div id=\"send-fail\">Yo, enter some text!<br><a href=\"\">&laquo; Back</a></div>";
+		} else {
 			$from="From: $name<$email>\r\nReturn-path: $email";
 			$subject="Wedding message received!";
 			
-			$formData = "From: $name\r\nEmail: $email\r\nPhone: $phone\r\nMessage: $message\r\n";
+			$formData = "From: $name\r\nEmail: $email\r\nPhone: $phone\r\nMusic suggestions: $music\r\nnMessage: $message\r\n";
 			
 			mail("teamlp.party@gmail.com", $subject, $formData, $from);
-			echo "<div id=\"send-success\">Email sent!</div>";
+			echo "<div id=\"send-success\">Message sent!</div>";
 		}
-	}  
+	}
 ?>

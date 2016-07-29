@@ -167,6 +167,23 @@ nav .s2itemsContainer {
 	margin: auto;
 }
 .s11 {}
+	
+strong {
+	font-weight: bold;
+}
+
+.font_5 a.noline, .font_6 a.noline {
+    border-bottom: 0;
+}
+.font_5 a.noline:hover, .font_6 a.noline:hover {
+    border-bottom: 0;
+}
+
+#Travel img {
+	height: 100px;
+	margin: 20px auto;
+}
+
 .cd-section .s11imageItemimageWrapper, .cd-section .s11imageItem_imgBorder, .cd-section .s11imageItemzoom {
 	position: relative;
 }
@@ -232,6 +249,9 @@ nav .s2itemsContainer {
 	width: 308px;
 	height: 221px;
 }
+.inline-block {
+	display: inline-block;
+}
 .text-section {
     margin-bottom: 100px;
 }
@@ -243,6 +263,12 @@ nav .s2itemsContainer {
 }
 .bottom-break {
     margin-bottom: 20px;
+}
+.big-bottom-break {
+    margin-bottom: 60px;
+}
+#Travel h2.font_4 {
+	margin-top:50px;
 }
 .font_6, .font_6 h6 {
 	font-size: 20px;
